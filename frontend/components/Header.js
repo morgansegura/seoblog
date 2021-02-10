@@ -3,8 +3,8 @@ import { APP_NAME } from '../config'
 
 const Header = ({ children, className }) => {
 	return (
-		<header className={`w-full max-w-6xl mx-auto py-4 px-8 ${className}`}>
-			<div className='flex justify-between items-center'>
+		<header className={className}>
+			<div className='w-full max-w-6xl mx-auto py-4 px-8 flex justify-between items-center'>
 				<Link href='/'>
 					<a>{APP_NAME}</a>
 				</Link>
