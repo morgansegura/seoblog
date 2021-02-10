@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
+import Router from 'next/router'
 import { signup } from '../../actions/auth'
 
 const SignupComponent = () => {
@@ -11,7 +13,7 @@ const SignupComponent = () => {
 		message: '',
 		showForm: true,
 	})
-	const { name, email, password, error, loading, message, showform } = values
+	const { name, email, password, error, loading, message, showForm } = values
 
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -33,25 +35,42 @@ const SignupComponent = () => {
 					message: data.message,
 					showForm: false,
 				})
+				Router.push(`/signin`)
 			}
 		})
-
-		// console.log({
-		// 	name,
-		// 	email,
-		// 	password,
-		// 	error,
-		// 	loading,
-		// 	message,
-		// 	showform,
-		// })
 	}
 	const handleChange = name => e => {
 		setValues({ ...values, error: false, [name]: e.target.value })
 	}
 
 	const showLoading = () =>
-		loading ? <div className=''>Loading...</div> : ''
+		loading ? (
+			<div className='rounded-md mt-4 bg-green-50 p-4'>
+				<div className='flex'>
+					<div className='flex-shrink-0'>
+						<svg
+							className='h-5 w-5 text-green-400'
+							xmlns='http://www.w3.org/2000/svg'
+							viewBox='0 0 20 20'
+							fill='currentColor'
+							aria-hidden='true'>
+							<path
+								fillRule='evenodd'
+								d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+								clipRule='evenodd'
+							/>
+						</svg>
+					</div>
+					<div className='ml-3'>
+						<p className='text-sm font-medium text-green-800'>
+							Loading...
+						</p>
+					</div>
+				</div>
+			</div>
+		) : (
+			''
+		)
 	const showError = () =>
 		error ? (
 			<div className='max-w-lg mx-auto mt-4 rounded-md bg-red-50 p-4'>
@@ -100,27 +119,13 @@ const SignupComponent = () => {
 					</div>
 					<div className='ml-3'>
 						<p className='text-sm font-medium text-green-800'>
-							{message}
+							{message} Please{' '}
+							<Link href='/signin'>
+								<a className='font-semibold text-purple-500 inline-block border-b border-transparent hover:border-purple-500 transition duration-300 ease-out'>
+									Signin
+								</a>
+							</Link>
 						</p>
-					</div>
-					<div className='ml-auto pl-3'>
-						<div className='-mx-1.5 -my-1.5'>
-							<button className='inline-flex bg-green-50 rounded-md p-1.5 text-green-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600'>
-								<span className='sr-only'>Dismiss</span>
-								<svg
-									className='h-5 w-5'
-									xmlns='http://www.w3.org/2000/svg'
-									viewBox='0 0 20 20'
-									fill='currentColor'
-									aria-hidden='true'>
-									<path
-										fillRule='evenodd'
-										d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-										clipRule='evenodd'
-									/>
-								</svg>
-							</button>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -168,10 +173,10 @@ const SignupComponent = () => {
 
 	return (
 		<React.Fragment>
-			{signupForm()}
-			{showError()}
 			{showLoading()}
+			{showError()}
 			{showMessage()}
+			{showForm && signupForm()}
 		</React.Fragment>
 	)
 }

@@ -9,7 +9,7 @@ const Signin = () => {
 			<div className='max-w-md mx-auto transform translate-y-1/4'>
 				<div className=' bg-white shadow rounded-md py-12 px-8 border border-gray-200'>
 					<h2 className='pb-2 font-semibold text-lg'>
-						Create an Account
+						Signin to your account
 					</h2>
 					<SigninComponent />
 				</div>
