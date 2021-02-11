@@ -1,4 +1,7 @@
+import React from 'react'
+import Router from 'next/router'
 import Link from 'next/link'
+import { isAuth, signout } from '../actions/auth'
 import { APP_NAME } from '../config'
 
 const Header = ({ children, className }) => {
@@ -18,16 +21,30 @@ const Header = ({ children, className }) => {
 						<div>Link2</div>
 					</div>
 					<div className='flex justify-end items-center space-x-4'>
-						<Link href='/signin'>
-							<a className='hover:text-gray-700 transition duration-300 ease-out'>
-								Signin
-							</a>
-						</Link>
-						<Link href='/signup'>
-							<a className='cursor-pointer rounded py-1 px-2 bg-blue-500 text-blue-100 hover:bg-blue-700 transition duration-300 ease-out'>
-								Signup
-							</a>
-						</Link>
+						{!isAuth() ? (
+							<React.Fragment>
+								<Link href='/signin'>
+									<a className='hover:text-gray-700 transition duration-300 ease-out'>
+										Signin
+									</a>
+								</Link>
+								<Link href='/signup'>
+									<a className='cursor-pointer rounded py-1 px-2 bg-blue-500 text-blue-100 hover:bg-blue-700 transition duration-300 ease-out'>
+										Signup
+									</a>
+								</Link>
+							</React.Fragment>
+						) : (
+							<React.Fragment>
+								<div
+									onClick={() =>
+										signout(() => Router.replace(`/signin`))
+									}
+									className='cursor-pointer rounded py-1 px-2 bg-blue-500 text-blue-100 hover:bg-blue-700 transition duration-300 ease-out'>
+									Signout
+								</div>
+							</React.Fragment>
+						)}
 					</div>
 				</div>
 			</div>
