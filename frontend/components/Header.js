@@ -1,8 +1,10 @@
-import React, { Fragment, useState, useEffect } from "react"
+import React, { Fragment, useState, useEffect, useRef } from "react"
 import Router from "next/router"
 import Link from "next/link"
 import { isAuth, signout } from "../actions/auth"
 import NProgress from "nprogress"
+import useOutsideClick from "./helpers/OutsideClick"
+
 import { APP_NAME } from "../config"
 
 Router.onRouteChangeStart = url => NProgress.start()
@@ -15,6 +17,11 @@ const Header = ({ className }) => {
 		authorized: false,
 		role: 0,
 		name: "",
+	})
+	const profileNavRef = useRef()
+
+	useOutsideClick(profileNavRef, () => {
+		if (toggleProfileNav) setToggleProfileNav(false)
 	})
 
 	useEffect(() => {
@@ -80,10 +87,11 @@ const Header = ({ className }) => {
 								</div>
 
 								<div
+									ref={profileNavRef}
 									className={`absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 transition-transform duration-300 ease-linear ${
 										toggleProfileNav
-											? "transform opacity-100 scale-100"
-											: "transform opacity-0 scale-95"
+											? "transform opacity-100 scale-100 z-1"
+											: "transform opacity-0 scale-95 -z-1"
 									}`}
 									role='menu'
 									aria-orientation='vertical'
