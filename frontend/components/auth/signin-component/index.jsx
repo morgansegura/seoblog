@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Router from "next/router"
-import { signin, authenticate, isAuth } from "../../actions/auth"
+import { signin, authenticate, isAuth } from "../../../actions/auth"
 
 const SigninComponent = () => {
 	const [values, setValues] = useState({

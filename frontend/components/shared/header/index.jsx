@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect, useRef } from "react"
 import Router from "next/router"
 import Link from "next/link"
-import { isAuth, signout } from "../actions/auth"
+import { isAuth, signout } from "../../../actions/auth"
 import NProgress from "nprogress"
-import useOutsideClick from "./helpers/OutsideClick"
+import { useOutsideClick } from "../../helpers"
 
-import { APP_NAME } from "../config"
+import { APP_NAME } from "../../../config"
 
 Router.onRouteChangeStart = url => NProgress.start()
 Router.onRouteChangeComplete = url => NProgress.done()

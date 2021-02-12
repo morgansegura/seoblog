@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Router from 'next/router'
-import { signup, isAuth } from '../../actions/auth'
+import React, { useState, useEffect } from "react"
+import Link from "next/link"
+import Router from "next/router"
+import { signup, isAuth } from "../../../actions/auth"
 
 const SignupComponent = () => {
 	const [values, setValues] = useState({
-		name: '',
-		email: '',
-		password: '',
-		error: '',
+		name: "",
+		email: "",
+		password: "",
+		error: "",
 		loading: false,
-		message: '',
+		message: "",
 		showForm: true,
 	})
 	const { name, email, password, error, loading, message, showForm } = values
@@ -31,10 +31,10 @@ const SignupComponent = () => {
 			} else {
 				setValues({
 					...values,
-					name: '',
-					email: '',
-					password: '',
-					error: '',
+					name: "",
+					email: "",
+					password: "",
+					error: "",
 					loading: false,
 					message: data.message,
 					showForm: false,
@@ -49,11 +49,11 @@ const SignupComponent = () => {
 
 	const showLoading = () =>
 		loading ? (
-			<div className='rounded-md mt-4 bg-green-50 p-4'>
+			<div className='p-4 mt-4 rounded-md bg-green-50'>
 				<div className='flex'>
 					<div className='flex-shrink-0'>
 						<svg
-							className='h-5 w-5 text-green-400'
+							className='w-5 h-5 text-green-400'
 							xmlns='http://www.w3.org/2000/svg'
 							viewBox='0 0 20 20'
 							fill='currentColor'
@@ -73,15 +73,15 @@ const SignupComponent = () => {
 				</div>
 			</div>
 		) : (
-			''
+			""
 		)
 	const showError = () =>
 		error ? (
-			<div className='max-w-lg mx-auto mt-4 rounded-md bg-red-50 p-4'>
+			<div className='max-w-lg p-4 mx-auto mt-4 rounded-md bg-red-50'>
 				<div className='flex'>
 					<div className='flex-shrink-0'>
 						<svg
-							className='h-5 w-5 text-red-400'
+							className='w-5 h-5 text-red-400'
 							xmlns='http://www.w3.org/2000/svg'
 							viewBox='0 0 20 20'
 							fill='currentColor'
@@ -101,15 +101,15 @@ const SignupComponent = () => {
 				</div>
 			</div>
 		) : (
-			''
+			""
 		)
 	const showMessage = () =>
 		message ? (
-			<div className='rounded-md mt-4 bg-green-50 p-4'>
+			<div className='p-4 mt-4 rounded-md bg-green-50'>
 				<div className='flex'>
 					<div className='flex-shrink-0'>
 						<svg
-							className='h-5 w-5 text-green-400'
+							className='w-5 h-5 text-green-400'
 							xmlns='http://www.w3.org/2000/svg'
 							viewBox='0 0 20 20'
 							fill='currentColor'
@@ -123,9 +123,9 @@ const SignupComponent = () => {
 					</div>
 					<div className='ml-3'>
 						<p className='text-sm font-medium text-green-800'>
-							{message} Please{' '}
+							{message} Please{" "}
 							<Link href='/signin'>
-								<a className='font-semibold text-purple-500 inline-block border-b border-transparent hover:border-purple-500 transition duration-300 ease-out'>
+								<a className='inline-block font-semibold text-purple-500 transition duration-300 ease-out border-b border-transparent hover:border-purple-500'>
 									Signin
 								</a>
 							</Link>
@@ -134,7 +134,7 @@ const SignupComponent = () => {
 				</div>
 			</div>
 		) : (
-			''
+			""
 		)
 
 	const signupForm = () => {
@@ -143,32 +143,32 @@ const SignupComponent = () => {
 				<div className='my-4'>
 					<input
 						value={name}
-						onChange={handleChange('name')}
+						onChange={handleChange("name")}
 						type='text'
 						placeholder='Type your name'
-						className='my-2 w-full py-2 px-4 rounded-md border border-gray-200'
+						className='w-full px-4 py-2 my-2 border border-gray-200 rounded-md'
 						autoComplete='name'
 					/>
 					<input
 						value={email}
-						onChange={handleChange('email')}
+						onChange={handleChange("email")}
 						type='email'
 						placeholder='Type your email address'
-						className='my-2 w-full py-2 px-4 rounded-md border border-gray-200'
+						className='w-full px-4 py-2 my-2 border border-gray-200 rounded-md'
 						autoComplete='username'
 					/>
 					<input
 						value={password}
-						onChange={handleChange('password')}
+						onChange={handleChange("password")}
 						type='password'
 						placeholder='Type your email address'
-						className='my-2 w-full py-2 px-4 rounded-md border border-gray-200'
+						className='w-full px-4 py-2 my-2 border border-gray-200 rounded-md'
 						autoComplete='current-password'
 					/>
 				</div>
 				<button
 					type='submit'
-					className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+					className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
 					Submit
 				</button>
 			</form>

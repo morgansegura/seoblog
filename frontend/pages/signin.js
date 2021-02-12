@@ -1,22 +1,22 @@
-import React from 'react'
-import Link from 'next/link'
-import Layout from '../components/Layout'
-import SigninComponent from '../components/auth/SigninComponent'
+import React from "react"
+import Link from "next/link"
+import { Layout } from "../components/shared"
+import { SigninComponent } from "../components/auth/"
 
 const Signin = () => {
 	return (
 		<Layout layoutClasses='bg-gray-100 bg-opacity-50'>
 			<div className='max-w-md mx-auto transform translate-y-1/4'>
-				<div className=' bg-white shadow rounded-md py-12 px-8 border border-gray-200'>
-					<h2 className='pb-2 font-semibold text-lg'>
+				<div className='px-8 py-12 bg-white border border-gray-200 rounded-md shadow '>
+					<h2 className='pb-2 text-lg font-semibold'>
 						Signin to your account
 					</h2>
 					<SigninComponent />
 				</div>
-				<div className='py-8 text-center text-gray-500 text-sm'>
-					Don't have an account?{' '}
+				<div className='py-8 text-sm text-center text-gray-500'>
+					Don't have an account?{" "}
 					<Link href='/signup'>
-						<a className='font-semibold text-purple-500 inline-block border-b border-transparent hover:border-purple-500 transition duration-300 ease-out'>
+						<a className='inline-block font-semibold text-purple-500 transition duration-300 ease-out border-b border-transparent hover:border-purple-500'>
 							Signup
 						</a>
 					</Link>
