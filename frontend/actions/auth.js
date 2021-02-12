@@ -1,13 +1,14 @@
-import fetch from 'isomorphic-fetch'
-import Cookies from 'js-cookie'
-import { API } from '../config'
+import React from "react"
+import fetch from "isomorphic-fetch"
+import Cookies from "js-cookie"
+import { API } from "../config"
 
 export const signup = user => {
 	return fetch(`${API}/signup`, {
-		method: 'POST',
+		method: "POST",
 		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
+			Accept: "application/json",
+			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(user),
 	})
@@ -18,10 +19,10 @@ export const signup = user => {
 }
 export const signin = user => {
 	return fetch(`${API}/signin`, {
-		method: 'POST',
+		method: "POST",
 		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
+			Accept: "application/json",
+			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(user),
 	})
@@ -32,15 +33,15 @@ export const signin = user => {
 }
 
 export const signout = next => {
-	removeCookie('token')
-	removeLocalStorage('user')
+	removeCookie("token")
+	removeLocalStorage("user")
 	next()
 
 	return fetch(`${API}/signout`, {
-		method: 'GET',
+		method: "GET",
 	})
 		.then(response => {
-			console.log('Signout successful!')
+			console.log("Signout successful!")
 		})
 		.catch(err => console.log(err))
 }
@@ -81,17 +82,17 @@ export const removeLocalStorage = key => {
 
 // authenticate user by passing data to cookie and localstorage
 export const authenticate = (data, next) => {
-	setCookie('token', data.token)
-	setLocalStorage('user', data.user)
+	setCookie("token", data.token)
+	setLocalStorage("user", data.user)
 	next()
 }
 
 export const isAuth = () => {
 	if (process.browser) {
-		const cookieCheck = getCookie('token')
+		const cookieCheck = getCookie("token")
 		if (cookieCheck) {
-			if (localStorage.getItem('user')) {
-				return JSON.parse(localStorage.getItem('user'))
+			if (localStorage.getItem("user")) {
+				return JSON.parse(localStorage.getItem("user"))
 			} else {
 				return false
 			}

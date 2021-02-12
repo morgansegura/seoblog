@@ -1,12 +1,12 @@
-import React from 'react'
-import Layout from '../../components/Layout'
-import Private from '../../components/Private'
+import React from "react"
+import Layout from "../../components/Layout"
+import Private from "../../components/auth/Private"
 
 const UserIndex = () => {
 	return (
 		<Layout>
 			<Private>
-				<div className='w-full max-w-6xl mx-auto p-8'>
+				<div className='w-full max-w-6xl p-8 mx-auto'>
 					<h2>User Dashboard</h2>
 				</div>
 			</Private>

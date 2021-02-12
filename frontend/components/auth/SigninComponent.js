@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Router from 'next/router'
-import { signin, authenticate, isAuth } from '../../actions/auth'
+import React, { useState, useEffect } from "react"
+import Link from "next/link"
+import Router from "next/router"
+import { signin, authenticate, isAuth } from "../../actions/auth"
 
 const SigninComponent = () => {
 	const [values, setValues] = useState({
-		email: '',
-		password: '',
-		error: '',
+		email: "",
+		password: "",
+		error: "",
 		loading: false,
-		message: '',
+		message: "",
 		showForm: true,
 	})
 	const { email, password, error, loading, message, showForm } = values
@@ -47,11 +47,11 @@ const SigninComponent = () => {
 
 	const showLoading = () =>
 		loading ? (
-			<div className='rounded-md mt-4 bg-blue-50 p-4'>
+			<div className='p-4 mt-4 rounded-md bg-blue-50'>
 				<div className='flex'>
 					<div className='flex-shrink-0'>
 						<svg
-							className='h-5 w-5 text-blue-400'
+							className='w-5 h-5 text-blue-400'
 							xmlns='http://www.w3.org/2000/svg'
 							viewBox='0 0 20 20'
 							fill='currentColor'
@@ -71,15 +71,15 @@ const SigninComponent = () => {
 				</div>
 			</div>
 		) : (
-			''
+			""
 		)
 	const showError = () =>
 		error ? (
-			<div className='max-w-lg mx-auto mt-4 rounded-md bg-red-50 p-4'>
+			<div className='max-w-lg p-4 mx-auto mt-4 rounded-md bg-red-50'>
 				<div className='flex'>
 					<div className='flex-shrink-0'>
 						<svg
-							className='h-5 w-5 text-red-400'
+							className='w-5 h-5 text-red-400'
 							xmlns='http://www.w3.org/2000/svg'
 							viewBox='0 0 20 20'
 							fill='currentColor'
@@ -99,7 +99,7 @@ const SigninComponent = () => {
 				</div>
 			</div>
 		) : (
-			''
+			""
 		)
 
 	const signinForm = () => {
@@ -108,24 +108,24 @@ const SigninComponent = () => {
 				<div className='my-4'>
 					<input
 						value={email}
-						onChange={handleChange('email')}
+						onChange={handleChange("email")}
 						type='email'
 						placeholder='Type your email address'
-						className='my-2 w-full py-2 px-4 rounded-md border border-gray-200'
+						className='w-full px-4 py-2 my-2 border border-gray-200 rounded-md'
 						autoComplete='username'
 					/>
 					<input
 						value={password}
-						onChange={handleChange('password')}
+						onChange={handleChange("password")}
 						type='password'
 						placeholder='Type your email address'
-						className='my-2 w-full py-2 px-4 rounded-md border border-gray-200'
+						className='w-full px-4 py-2 my-2 border border-gray-200 rounded-md'
 						autoComplete='current-password'
 					/>
 				</div>
 				<button
 					type='submit'
-					className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+					className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
 					Signin
 				</button>
 			</form>

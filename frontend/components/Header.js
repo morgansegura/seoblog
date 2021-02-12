@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState, useEffect } from "react"
 import Router from "next/router"
 import Link from "next/link"
 import { isAuth, signout } from "../actions/auth"
@@ -6,11 +6,20 @@ import { APP_NAME } from "../config"
 
 const Header = ({ className }) => {
 	const [toggleProfileNav, setToggleProfileNav] = useState(false)
+	const [authCheck, setAuthCheck] = useState({
+		authorized: false,
+		role: 0,
+		name: "",
+	})
 
-	const handleProfileNav = () => {
-		setToggleProfileNav(!toggleProfileNav)
-		console.log(toggleProfileNav)
-	}
+	useEffect(() => {
+		setAuthCheck({
+			authorized: Boolean(isAuth()),
+			role: isAuth().role,
+			name: isAuth().name,
+		})
+	}, [])
+
 	return (
 		<header className={className}>
 			<div className='flex items-center justify-between w-full max-w-6xl px-8 py-4 mx-auto'>
@@ -26,7 +35,7 @@ const Header = ({ className }) => {
 						</Link>
 					</div>
 					<div className='flex items-center justify-end space-x-4'>
-						{!isAuth() ? (
+						{!authCheck.authorized ? (
 							<Fragment>
 								<Link href='/signin'>
 									<a className='transition duration-300 ease-out hover:text-gray-700'>
@@ -40,67 +49,68 @@ const Header = ({ className }) => {
 								</Link>
 							</Fragment>
 						) : (
-							<Fragment>
-								<div className='relative flex-shrink-0 ml-5'>
-									<div>
-										<button
-											type='button'
-											className='flex bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500'
-											id='user-menu'
-											aria-haspopup='true'>
-											<span className='sr-only'>
-												Open user menu
-											</span>
-											<img
-												className='w-8 h-8 rounded-full'
-												src='https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80'
-												alt=''
-											/>
-										</button>
-									</div>
+							<div className='relative flex-shrink-0 ml-5'>
+								<div>
+									<button
+										type='button'
+										className='flex bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500'
+										id='user-menu'
+										aria-haspopup='true'>
+										<span className='sr-only'>
+											Open user menu
+										</span>
+										<img
+											className='w-8 h-8 rounded-full'
+											src='https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80'
+											alt=''
+										/>
+									</button>
+								</div>
 
-									<div
-										onClick={handleProfileNav}
-										className={`absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 ${
-											toggleProfileNav
-												? "transform opacity-100 scale-100"
-												: "transform opacity-0 scale-95"
-										} transition-transform duration-300 ease-linear`}
-										role='menu'
-										aria-orientation='vertical'
-										aria-labelledby='user-menu'>
-										{isAuth() && isAuth().role === 1 ? (
-											<Link href='/admin'>
-												<a
-													className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
-													role='menuitem'>
-													Your Dashboard
-												</a>
-											</Link>
-										) : (
-											<Link href='/user'>
-												<a
-													className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
-													role='menuitem'>
-													Your Dashboard
-												</a>
-											</Link>
-										)}
-										<div
-											onClick={() =>
-												signout(() =>
-													Router.replace(`/signin`)
-												)
-											}>
+								<div
+									onClick={() =>
+										setToggleProfileNav(!toggleProfileNav)
+									}
+									className={`absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 transition-transform duration-300 ease-linear ${
+										toggleProfileNav
+											? "transform opacity-100 scale-100"
+											: "transform opacity-0 scale-95"
+									}`}
+									role='menu'
+									aria-orientation='vertical'
+									aria-labelledby='user-menu'>
+									{authCheck.role === 1 && (
+										<Link href='/admin'>
 											<a
-												className='block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100'
+												className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
 												role='menuitem'>
-												Sign out
+												Your Dashboard
 											</a>
-										</div>
+										</Link>
+									)}
+									{authCheck.role === 0 && (
+										<Link href='/user'>
+											<a
+												className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+												role='menuitem'>
+												Your Dashboard
+											</a>
+										</Link>
+									)}
+									<div
+										onClick={() =>
+											signout(() =>
+												Router.replace(`/signin`)
+											)
+										}>
+										<a
+											className='block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100'
+											role='menuitem'>
+											Sign out
+										</a>
 									</div>
 								</div>
-							</Fragment>
+							</div>
 						)}
 					</div>
 				</div>
