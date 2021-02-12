@@ -2,7 +2,12 @@ import React, { Fragment, useState, useEffect } from "react"
 import Router from "next/router"
 import Link from "next/link"
 import { isAuth, signout } from "../actions/auth"
+import NProgress from "nprogress"
 import { APP_NAME } from "../config"
+
+Router.onRouteChangeStart = url => NProgress.start()
+Router.onRouteChangeComplete = url => NProgress.done()
+Router.onRouteChangeError = url => NProgress.done()
 
 const Header = ({ className }) => {
 	const [toggleProfileNav, setToggleProfileNav] = useState(false)
