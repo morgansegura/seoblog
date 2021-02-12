@@ -13,11 +13,13 @@ const Header = ({ className }) => {
 	})
 
 	useEffect(() => {
-		setAuthCheck({
-			authorized: Boolean(isAuth()),
-			role: isAuth().role,
-			name: isAuth().name,
-		})
+		if (isAuth()) {
+			setAuthCheck({
+				authorized: Boolean(isAuth()),
+				role: isAuth().role,
+				name: isAuth().name,
+			})
+		}
 	}, [])
 
 	return (
@@ -52,6 +54,11 @@ const Header = ({ className }) => {
 							<div className='relative flex-shrink-0 ml-5'>
 								<div>
 									<button
+										onClick={() =>
+											setToggleProfileNav(
+												!toggleProfileNav
+											)
+										}
 										type='button'
 										className='flex bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500'
 										id='user-menu'
@@ -68,9 +75,6 @@ const Header = ({ className }) => {
 								</div>
 
 								<div
-									onClick={() =>
-										setToggleProfileNav(!toggleProfileNav)
-									}
 									className={`absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 transition-transform duration-300 ease-linear ${
 										toggleProfileNav
 											? "transform opacity-100 scale-100"
