@@ -1,12 +1,12 @@
 import React from "react"
 import Link from "next/link"
 import { SignupComponent } from "../components/auth/"
-import { Layout } from "../components/shared"
+import { Container, Layout } from "../components/shared"
 
 const Signup = () => {
 	return (
 		<Layout layoutClasses='bg-gray-100 bg-opacity-50'>
-			<div className='max-w-md mx-auto transform translate-y-1/4'>
+			<Container size='sm' className='transform lg:translate-y-1/4'>
 				<div className='px-8 py-12 bg-white border border-gray-200 rounded-md shadow '>
 					<h2 className='pb-2 text-lg font-semibold'>
 						Create an Account
@@ -21,7 +21,7 @@ const Signup = () => {
 						</a>
 					</Link>
 				</div>
-			</div>
+			</Container>
 		</Layout>
 	)
 }

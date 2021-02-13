@@ -1,14 +1,20 @@
 import React from "react"
-import { Layout } from "../../components/shared"
-import { Admin } from "../../components/auth"
+import { Container, Layout } from "../../../components/shared"
+import { Admin } from "../../../components/auth"
+import { Category } from "../../../components/crud"
 
 const CategoryTag = () => {
 	return (
 		<Layout>
 			<Admin>
-				<div className='w-full max-w-6xl p-8 mx-auto'>
-					<h2>Manage Categories and Tags</h2>
-				</div>
+				<Container>
+					<h2 className='text-xl font-semibold text-center lg:text-left'>
+						Manage Categories & Tags
+					</h2>
+					<div className=''>
+						<Category />
+					</div>
+				</Container>
 			</Admin>
 		</Layout>
 	)

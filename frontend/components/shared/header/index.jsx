@@ -36,7 +36,7 @@ const Header = ({ className }) => {
 
 	return (
 		<header className={className}>
-			<div className='flex items-center justify-between w-full px-8 py-4 mx-auto'>
+			<div className='flex items-center justify-between w-full px-4 py-4 mx-auto lg:px-8'>
 				<Link href='/'>
 					<a>{APP_NAME}</a>
 				</Link>
