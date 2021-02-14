@@ -1,12 +1,17 @@
-import React from "react"
-import Link from "next/link"
-import { Layout } from "../../components/shared"
-import { Admin } from "../../components/auth"
+import React from 'react'
+import { Container, Layout } from '../../components/shared'
+import { Admin } from '../../components/auth'
 
 const AdminIndex = () => {
 	return (
 		<Layout>
-			<Admin>Admin Page</Admin>
+			<Admin>
+				<Container>
+					<h2 className="mb-3 text-xl font-semibold text-center sm:text-left">
+						Admin Page
+					</h2>
+				</Container>
+			</Admin>
 		</Layout>
 	)
 }

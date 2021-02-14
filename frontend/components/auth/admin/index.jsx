@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import Router, { useRouter } from 'next/router'
-import { ActiveLink, Container, Tabs } from '../../../components/shared'
+import React, { useEffect } from 'react'
+import Router from 'next/router'
+import { Container, Tabs } from '../../../components/shared'
 import { isAuth } from '../../../actions/auth'
 
 const Admin = ({ children }) => {
@@ -31,9 +31,7 @@ const Admin = ({ children }) => {
 	]
 	return (
 		<Container>
-			<Tabs title="Admin Dashboard" tabData={tabData}>
-				{children}
-			</Tabs>
+			<Tabs tabData={tabData}>{children}</Tabs>
 		</Container>
 	)
 }

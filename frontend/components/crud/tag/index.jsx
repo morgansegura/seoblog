@@ -1,51 +1,39 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import Link from 'next/link'
-import Router from 'next/router'
 import { getCookie } from '../../../actions/auth'
-import { Button, Toast } from '../../../components/shared'
-import {
-	create,
-	getCategories,
-	removeCategory,
-} from '../../../actions/category'
-import {
-	BiCheckCircle,
-	BiError,
-	BiMinusCircle,
-	BiToggleLeft,
-	BiToggleRight,
-} from 'react-icons/bi'
+import { Button, Toast } from '../../shared'
+import { create, getTags, removeTag } from '../../../actions/tag'
+import { BiCheckCircle, BiError, BiMinusCircle } from 'react-icons/bi'
 
-const Category = () => {
+const Tag = () => {
 	const [showTag, setShowTag] = useState(false)
 	const [values, setValues] = useState({
 		name: '',
 		error: false,
 		success: false,
-		categories: [],
+		tags: [],
 		removed: false,
 		reload: false,
 	})
 
-	const { name, error, success, categories, removed, reload } = values
+	const { name, error, success, tags, removed, reload } = values
 	const token = getCookie('token')
 
 	useEffect(() => {
-		loadCategories()
+		loadTags()
 	}, [reload])
 
-	const loadCategories = () => {
-		getCategories().then(data => {
+	const loadTags = () => {
+		getTags().then(data => {
 			if (data.error) {
 				console.log(data.error)
 			} else {
-				setValues({ ...values, categories: data })
+				setValues({ ...values, tags: data })
 			}
 		})
 	}
 
-	const showCategories = () => {
-		return categories.map((c, i) => {
+	const showTags = () => {
+		return tags.map((c, i) => {
 			return (
 				<div
 					onClick={() => deleteConfirm(c.slug)}
@@ -65,17 +53,14 @@ const Category = () => {
 	}
 
 	const deleteConfirm = slug => {
-		let answer = window.confirm(
-			'Are you sure you want to delete this category?'
-		)
+		let answer = window.confirm('Are you sure you want to delete this tag?')
 		if (answer) {
-			deleteCategory(slug)
+			deleteTag(slug)
 		}
-		// deleteCategory(slug)
 	}
 
-	const deleteCategory = slug => {
-		removeCategory(slug, token).then(data => {
+	const deleteTag = slug => {
+		removeTag(slug, token).then(data => {
 			if (data.error) {
 				console.log(data.error)
 			} else {
@@ -123,7 +108,7 @@ const Category = () => {
 			return (
 				<Toast
 					className="my-4 text-green-700 bg-green-50"
-					message="Category created!"
+					message="Tag created!"
 					icon={<BiCheckCircle className="w-5 h-5 text-green-700" />}
 				/>
 			)
@@ -145,7 +130,7 @@ const Category = () => {
 			return (
 				<Toast
 					className="my-4 text-green-700 bg-green-50"
-					message="Category successfully removed!"
+					message="Tag successfully removed!"
 					icon={<BiCheckCircle className="w-5 h-5 text-green-700" />}
 				/>
 			)
@@ -156,26 +141,26 @@ const Category = () => {
 		setValues({ ...values, error: false, sucess: false, removed: '' })
 	}
 
-	const newCategoryForm = () => (
+	const newTagForm = () => (
 		<form onSubmit={clickSubmit}>
 			<div>
 				<div className="flex mt-1 rounded-md shadow-sm">
 					<span className="inline-flex items-center px-3 text-gray-500 border border-r-0 border-gray-300 rounded-l-md bg-gray-50 sm:text-sm">
-						Category
+						Tag
 					</span>
 					<input
 						type="text"
 						onChange={handleChange}
 						value={name}
 						required
-						name="category-name"
-						id="categoryName"
+						name="tag-name"
+						id="tagName"
 						className="flex-1 block w-full min-w-0 px-3 py-2 border border-gray-300 rounded-none rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-						placeholder="Type the category name."
+						placeholder="Type the tag name."
 					/>
 				</div>
 				<div className="pt-4 sm:flex-shrink-0 sm:flex sm:items-center">
-					<Button type="submit">Create Category</Button>
+					<Button type="submit">Create Tag</Button>
 				</div>
 			</div>
 		</form>
@@ -187,20 +172,20 @@ const Category = () => {
 			{showError()}
 
 			<div onMouseMove={mouseMoveHandler}>
-				{newCategoryForm()}
+				{newTagForm()}
 				{showRemoved()}
-				{values.categories.length > 0 && (
+				{values.tags.length > 0 && (
 					<div className="relative p-6 mt-6 border border-gray-200 rounded">
 						<div className="flex justify-between mb-3">
 							<h3 className="text-xs font-semibold text-gray-600 uppercase">
-								Category List
+								Tag List
 								<span
 									className={`inline-flex items-center ml-2 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ${
-										values.categories.length > 1
+										values.tags.length > 1
 											? 'px-1.5'
 											: 'px-2'
 									}`}>
-									{values.categories.length}
+									{values.tags.length}
 								</span>
 							</h3>
 							<div className="">
@@ -240,7 +225,6 @@ const Category = () => {
 												/>
 											</svg>
 										</span>
-										{/*<!-- Enabled: "opacity-100 ease-in duration-200", Not Enabled: "opacity-0 ease-out duration-100" -->*/}
 										<span
 											className={`absolute inset-0 flex items-center justify-center w-full h-full transition-opacity duration-100 ease-out opacity-0 ${
 												showTag
@@ -259,7 +243,7 @@ const Category = () => {
 								</button>
 							</div>
 						</div>
-						<div className="flex flex-wrap">{showCategories()}</div>
+						<div className="flex flex-wrap">{showTags()}</div>
 					</div>
 				)}
 			</div>
@@ -267,4 +251,4 @@ const Category = () => {
 	)
 }
 
-export default Category
+export default Tag
