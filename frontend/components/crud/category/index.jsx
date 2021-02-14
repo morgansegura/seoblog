@@ -100,7 +100,7 @@ const Category = () => {
 				setValues({
 					...values,
 					error: false,
-					success: false,
+					success: true,
 					name: "",
 					removed: false,
 					reload: !reload,
