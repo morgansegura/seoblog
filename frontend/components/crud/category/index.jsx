@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react"
 import Link from "next/link"
 import Router from "next/router"
 import { getCookie } from "../../../actions/auth"
+import { Container } from "../../../components/shared"
 import {
 	create,
 	getCategories,
@@ -39,7 +40,7 @@ const Category = () => {
 
 	const newCategoryForm = () => (
 		<form onSubmit={clickSubmit}>
-			<div>
+			<Container size='sm'>
 				<label
 					htmlFor='categoryName'
 					className='block text-sm font-medium text-gray-700'>
@@ -63,7 +64,7 @@ const Category = () => {
 				<button type='submit' className=''>
 					Create Category
 				</button>
-			</div>
+			</Container>
 		</form>
 	)
 
