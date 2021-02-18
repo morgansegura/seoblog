@@ -8,7 +8,7 @@ const CategoryTag = () => {
 		<Layout>
 			<Admin>
 				<Container>
-					<h2 className='text-xl font-semibold text-center lg:text-left'>
+					<h2 className='mb-3 text-xl font-semibold text-center sm:text-left'>
 						Manage Categories & Tags
 					</h2>
 					<div className=''>

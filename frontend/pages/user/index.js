@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Layout } from "../../components"
+import { Container, Layout } from "../../components/shared"
 import { Private } from "../../components/auth"
 
 const UserIndex = () => {
