@@ -27,6 +27,7 @@ const Tabs = ({ children, title, tabData }) => {
 						<label htmlFor="selected-tab" className="sr-only">
 							Select a tab
 						</label>
+						// TODO: Make default setting for select
 						<select
 							value={defaultOption}
 							defaultValue={defaultOption}
