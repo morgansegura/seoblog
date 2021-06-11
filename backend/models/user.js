@@ -3,7 +3,7 @@ const crypto = require('crypto')
 
 const userSchema = new mongoose.Schema(
 	{
-		userName: {
+		username: {
 			type: String,
 			trim: true,
 			required: true,
@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
 			index: true,
 			lowercase: true,
 		},
-		userName: {
+		name: {
 			type: String,
 			trim: true,
 			required: true,
@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		hashedPassword: {
+		hashed_password: {
 			type: String,
 			required: true,
 		},
@@ -60,7 +60,7 @@ userSchema
 		this._password = password
 
 		// generate salt
-		this.salt = this.makSalt()
+		this.salt = this.makeSalt()
 
 		// encrypt password
 		this.hashed_password = this.encryptPassword(password)
