@@ -1,11 +1,6 @@
-import Container from '@core/structure/Container'
-import Text from '@core/typography/Text'
+import Landing from '@layouts/Landing'
 
 const Index = () => {
-	return (
-		<Container>
-			<Text as="h1">Index Page</Text>
-		</Container>
-	)
+	return <Landing />
 }
 export default Index

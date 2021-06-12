@@ -2,8 +2,10 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
+            "@auth/*": ["components/auth/*"],
             "@components/*": ["components/*"],
             "@core/*": ["components/core/*"],
+            "@layouts/*": ["components/layouts/*"],
             "@styles/*": ["styles/*"],
         }
     },

@@ -1,0 +1,34 @@
+@import '~styles/utilities';
+
+.container {
+}
+
+.header {
+	padding-top: $sp-400;
+	padding-bottom: $sp-400;
+	border-bottom: 1px solid $grey-300;
+}
+
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	flex: 1 0 auto;
+	svg {
+		width: 30px;
+	}
+}
+
+.nav {
+	display: felx;
+	align-items: center;
+}
+
+.navItem {
+	@include f250;
+
+	margin-left: $sp-300;
+}
