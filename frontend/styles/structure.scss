@@ -1,0 +1,16 @@
+:root {
+    --lane-gutter: #{$sp-400};
+    --grid-gutter: #{$sp-400};
+
+    @include md {
+        --lane-gutter: #{$sp-850};
+    }
+
+    @include lg {
+        --grid-gutter: #{$sp-750};
+    }
+
+    @include xl {
+        --grid-gutter: #{$sp-750};
+    }
+}

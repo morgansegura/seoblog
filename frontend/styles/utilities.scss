@@ -1,0 +1,209 @@
+@use "sass:math";
+// Because this file is included into many components, please only utilize SCSS features such as variables, mixins, etc.
+// Please do not use selectors, as they will make it through compilation and create duplicate CSS for the various components
+
+$font-family: 'DM Sans', Graphik, -apple-system, BlinkMacSystemFont, Segoe UI,
+	Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+	sans-serif;
+
+$font-family-alt: Graphik, 'DM Sans', -apple-system, BlinkMacSystemFont,
+	Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+	Helvetica Neue, sans-serif;
+
+// Variables
+$font-base: 18px;
+$font-weight-base: 400;
+
+// Colors
+$black: #171717;
+$white: #fff;
+
+$primary-100: #bbdbfb;
+$primary-200: #8bc2f9;
+$primary-300: #5aa8f6;
+$primary-400: #288ef4;
+$primary-500: #0c75df;
+$primary-700: #07427e;
+$primary-1000: #020f1d;
+
+$grey-50: #efefef;
+$grey-100: #f7f7f7;
+$grey-200: #f3f3f3;
+$grey-300: #e6e6e6;
+$grey-350: #dedede;
+$grey-400: #dcdcdc;
+$grey-450: #cfcfcf;
+$grey-500: #cdcdcd;
+$grey-575: #959595;
+$grey-600: #7e7e7e;
+$grey-700: #707070;
+$grey-800: #4d4d4d;
+$grey-900: #333;
+$grey-950: #303133;
+$grey-1000: #292929;
+$grey-1100: #171717;
+
+$parchment-400: #fcfbfa;
+$parchment-450: #fcfbf9;
+$parchment-500: #f7f4ef;
+$parchment-600: #f1ede6;
+
+$clay-400: #e8e7e5;
+$clay-500: #e0ded9;
+$clay-600: #d2cfc8;
+
+$warning-400: #ff5252;
+$warning-500: #df1642;
+
+$alert-400: #ffca33;
+
+$success-400: #10d165;
+
+// Spacing
+$sp-50: 4px;
+$sp-100: 5px;
+$sp-125: 6px;
+$sp-150: 8px;
+$sp-200: 10px;
+$sp-250: 11px;
+$sp-325: 14px;
+$sp-300: 12px;
+$sp-325: 13px;
+$sp-350: 15px;
+$sp-400: 16px;
+$sp-500: 18px;
+$sp-600: 20px;
+$sp-650: 24px;
+$sp-675: 25px;
+$sp-700: 30px;
+$sp-750: 32px;
+$sp-800: 36px;
+$sp-850: 40px;
+$sp-875: 45px;
+$sp-900: 48px;
+$sp-950: 52px;
+$sp-1000: 56px;
+$sp-1050: 60px;
+$sp-1100: 64px;
+$sp-1200: 72px;
+
+// Screen
+$screen-xs: 0;
+$screen-sm: 520px;
+$screen-md: 768px;
+$screen-lg: 1024px;
+$screen-xl: 1440px;
+
+// Lanes
+$lane-md: 688px;
+$lane-lg: 980px;
+$lane-xl: 1128px;
+
+// Grid
+$grid-gutter: $sp-400;
+$grid-gutter-md: $grid-gutter;
+$grid-gutter-lg: $sp-650;
+$grid-gutter-xl: $sp-750;
+
+// Misc.
+$radius: 2px;
+$page-head-height: 53px;
+
+// Functions
+@function rem($size) {
+	@return math.div($size, $font-base) * 1rem;
+}
+
+// Mixins
+@mixin md {
+	@media screen and (min-width: $screen-md) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@media screen and (min-width: $screen-lg) {
+		@content;
+	}
+}
+
+@mixin xl {
+	@media screen and (min-width: $screen-xl) {
+		@content;
+	}
+}
+
+@mixin f0 {
+	font-size: var(--fz-0);
+	line-height: var(--lh-0);
+}
+
+@mixin f100 {
+	font-size: var(--fz-100);
+	line-height: var(--lh-100);
+}
+
+@mixin f200 {
+	font-size: var(--fz-200);
+	line-height: var(--lh-200);
+}
+
+@mixin f250 {
+	font-size: var(--fz-250);
+	line-height: var(--lh-250);
+}
+
+@mixin f300 {
+	font-size: var(--fz-300);
+	line-height: var(--lh-300);
+}
+
+@mixin f400 {
+	font-size: var(--fz-400);
+	line-height: var(--lh-400);
+}
+
+@mixin f500 {
+	font-size: var(--fz-500);
+	line-height: var(--lh-500);
+}
+
+@mixin f600 {
+	font-size: var(--fz-600);
+	line-height: var(--lh-600);
+}
+
+@mixin f700 {
+	font-size: var(--fz-700);
+	line-height: var(--lh-700);
+}
+
+@mixin f800 {
+	font-size: var(--fz-800);
+	line-height: var(--lh-800);
+}
+
+@mixin f900 {
+	font-size: var(--fz-900);
+	line-height: var(--lh-900);
+}
+
+@mixin fill {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+@mixin cover {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+@mixin grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	column-gap: $grid-gutter-xl;
+}
