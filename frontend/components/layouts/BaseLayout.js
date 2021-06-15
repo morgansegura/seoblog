@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
+import { isAuth, signout } from '@actions/auth'
 import Container from '@core/structure/Container'
 import IconCodeLockSolid from '@core/icons/IconCodeLockSolid'
 
@@ -20,7 +22,6 @@ const BaseLayout = ({ children, ...props }) => {
 			id: 1,
 			label: 'Home',
 			path: '/',
-			isAuth: false,
 		},
 	]
 	return (
@@ -41,22 +42,27 @@ const BaseLayout = ({ children, ...props }) => {
 									</a>
 								</Link>
 							))}
-						{!isLoggedIn ? (
+						{isAuth() ? (
+							<>
+								<Link href="/secret">
+									<a className={styles.navItem}>Secret</a>
+								</Link>
+
+								<div
+									onClick={() =>
+										signout(() => Router.replace(`/signin`))
+									}
+									className={styles.navItem}>
+									Signout
+								</div>
+							</>
+						) : (
 							<>
 								<Link href="/signup">
 									<a className={styles.navItem}>Signup</a>
 								</Link>
 								<Link href="/signin">
 									<a className={styles.navItem}>Signin</a>
-								</Link>
-							</>
-						) : (
-							<>
-								<Link href="/secret">
-									<a className={styles.navItem}>Secret</a>
-								</Link>
-								<Link href="/signout">
-									<a className={styles.navItem}>Signout</a>
 								</Link>
 							</>
 						)}

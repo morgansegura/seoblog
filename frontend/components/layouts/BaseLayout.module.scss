@@ -23,12 +23,13 @@
 }
 
 .nav {
-	display: felx;
+	display: flex;
 	align-items: center;
 }
 
 .navItem {
 	@include f250;
 
+	cursor: pointer;
 	margin-left: $sp-300;
 }

@@ -1,5 +1,58 @@
 @import '~styles/utilities';
 
 .container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	padding-top: $sp-900;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid $grey-300;
+	padding: $sp-400;
+	border-radius: 6px;
+	width: 100%;
+	max-width: $screen-sm;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.textInput {
+	@include f300;
+
+	background-color: $grey-200;
+	border-radius: 3px 3px 0 0;
+	color: $grey-900;
+	border-bottom: 1px solid $grey-300;
+	padding: $sp-100 $sp-250;
+	margin-bottom: $sp-400;
+
+	&::placeholder {
+		color: $grey-600;
+	}
+}
+
+.buttonBlock {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: $sp-300;
+	margin-bottom: $sp-300;
+}
+
+.button {
+	@include f250;
+
+	background-color: $success-400;
+	padding: $sp-50 $sp-300;
+	color: rgba($white, 0.85);
+	font-weight: 600;
+	border-radius: 3px;
+	transition: opacity 0.3s ease-out;
+
+	&:hover {
+		opacity: 0.8;
+	}
 }
