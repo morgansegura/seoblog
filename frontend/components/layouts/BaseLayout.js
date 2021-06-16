@@ -24,6 +24,7 @@ const BaseLayout = ({ children, ...props }) => {
 			path: '/',
 		},
 	]
+
 	return (
 		<div {...props}>
 			<Header className={styles.header}>
@@ -44,9 +45,21 @@ const BaseLayout = ({ children, ...props }) => {
 							))}
 						{isAuth() ? (
 							<>
-								<Link href="/secret">
-									<a className={styles.navItem}>Secret</a>
-								</Link>
+								{isAuth().role === 0 && (
+									<Link href="/user">
+										<a className={styles.navItem}>
+											Dashboard
+										</a>
+									</Link>
+								)}
+
+								{isAuth().role === 1 && (
+									<Link href="/admin">
+										<a className={styles.navItem}>
+											Dashboard
+										</a>
+									</Link>
+								)}
 
 								<div
 									onClick={() =>

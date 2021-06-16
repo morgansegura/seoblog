@@ -3,10 +3,10 @@ import Container from '@core/structure/Container'
 
 import styles from './Landing.module.scss'
 
-const Landing = () => {
+const Landing = ({ title }) => {
 	return (
 		<BaseLayout>
-			<Container className={styles.container}>Landing</Container>
+			<Container className={styles.container}>{title}</Container>
 		</BaseLayout>
 	)
 }
