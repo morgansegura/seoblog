@@ -89,11 +89,13 @@ const Header = ({ children, open, ...props }) => {
 										className={styles.navItem}>
 										Signout
 									</div>
-									<div
-										className={styles.navMenuIcon}
-										onClick={open}>
-										<IconMenu />
-									</div>
+									{open && (
+										<div
+											className={styles.navMenuIcon}
+											onClick={open}>
+											<IconMenu />
+										</div>
+									)}
 								</>
 							)}
 						</>
