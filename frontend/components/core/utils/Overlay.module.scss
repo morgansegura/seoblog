@@ -1,0 +1,19 @@
+@import '~styles/utilities';
+
+.backdrop {
+	z-index: -1;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	background-color: rgba($grey-900, 0.5);
+	// transition: opacity 0.2s ease-in-out;
+
+	&.active {
+		z-index: 1;
+		opacity: 1;
+		transition: opacity 0.3s ease-in-out;
+	}
+}

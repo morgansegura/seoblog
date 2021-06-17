@@ -1,0 +1,73 @@
+@import '~styles/utilities';
+
+.container {
+	padding-top: $sp-900;
+}
+
+.popoutMenu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: white;
+	box-shadow: -4px 0px 20px rgba(0, 0, 0, 0.15);
+	width: 490px;
+	padding: 80px 32px;
+	transform: translateX(100%);
+	transition: transform 0.3s ease-in-out;
+
+	&.active {
+		transform: translateX(0);
+	}
+}
+
+.close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+	transition: opacity 0.3s ease-out;
+	svg {
+		width: 20px;
+		height: 20px;
+
+		g {
+			stroke: $grey-900;
+		}
+	}
+
+	&:hover,
+	&:active {
+		opacity: 0.5;
+	}
+}
+
+.menu {
+}
+
+.menuTitle {
+	@include f200;
+
+	color: $grey-600;
+}
+
+.menuItem {
+	@include f250;
+
+	cursor: pointer;
+	margin-top: $sp-100;
+	transition: color 0.3s ease-out;
+
+	&:hover,
+	&:active {
+		color: $primary-400;
+	}
+}
+
+.divider {
+	height: 1px;
+	display: flex;
+	background-color: $grey-200;
+	margin-top: $sp-400;
+	margin-bottom: $sp-400;
+}

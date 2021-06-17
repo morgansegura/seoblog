@@ -2,34 +2,3 @@
 
 .container {
 }
-
-.header {
-	padding-top: $sp-400;
-	padding-bottom: $sp-400;
-	border-bottom: 1px solid $grey-300;
-}
-
-.headerContainer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.logo {
-	flex: 1 0 auto;
-	svg {
-		width: 30px;
-	}
-}
-
-.nav {
-	display: flex;
-	align-items: center;
-}
-
-.navItem {
-	@include f250;
-
-	cursor: pointer;
-	margin-left: $sp-300;
-}

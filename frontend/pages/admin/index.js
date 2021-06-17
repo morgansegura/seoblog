@@ -1,10 +1,10 @@
-import Landing from '@layouts/Landing'
+import AdminDashboard from '@components/layouts/admin/AdminDashboard'
 import Admin from '@auth/Admin'
 
 const AdminIndex = () => {
 	return (
 		<Admin>
-			<Landing title="Admin Dashboard" />
+			<AdminDashboard title="Admin Dashboard" />
 		</Admin>
 	)
 }
