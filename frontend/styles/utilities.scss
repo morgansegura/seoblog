@@ -2,13 +2,13 @@
 // Because this file is included into many components, please only utilize SCSS features such as variables, mixins, etc.
 // Please do not use selectors, as they will make it through compilation and create duplicate CSS for the various components
 
-$font-family: 'DM Sans', Graphik, -apple-system, BlinkMacSystemFont, Segoe UI,
+$font-family: 'Roboto', Graphik, -apple-system, BlinkMacSystemFont, Segoe UI,
 	Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
 	sans-serif;
 
-$font-family-alt: Graphik, 'DM Sans', -apple-system, BlinkMacSystemFont,
-	Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-	Helvetica Neue, sans-serif;
+$font-family-alt: Graphik, 'Roboto', -apple-system, BlinkMacSystemFont, Segoe UI,
+	Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+	sans-serif;
 
 // Variables
 $font-base: 18px;

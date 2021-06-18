@@ -1,11 +1,6 @@
-import AdminDashboard from '@components/layouts/admin/AdminDashboard'
-import Admin from '@auth/Admin'
+import AdminDashboard from '@layouts/admin/AdminDashboard'
 
 const AdminIndex = () => {
-	return (
-		<Admin>
-			<AdminDashboard title="Admin Dashboard" />
-		</Admin>
-	)
+	return <AdminDashboard title="Admin Dashboard" />
 }
 export default AdminIndex

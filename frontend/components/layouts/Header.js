@@ -6,7 +6,7 @@ import { isAuth, signout } from '@actions/auth'
 // Core Components
 import Container from '@core/structure/Container'
 // Icons
-import IconCodeLockSolid from '@core/icons/IconCodeLockSolid'
+import IconSkull from '@core/icons/IconSkull'
 import IconMenu from '@core/icons/IconMenu'
 // Styles
 import styles from './Header.module.scss'
@@ -42,7 +42,7 @@ const Header = ({ children, open, ...props }) => {
 			<Container className={styles.headerContainer}>
 				<Link href="/">
 					<a className={styles.logo}>
-						<IconCodeLockSolid />
+						<IconSkull />
 					</a>
 				</Link>
 				<nav className={styles.nav}>

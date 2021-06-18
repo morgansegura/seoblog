@@ -1,0 +1,49 @@
+@import '~styles/utilities';
+
+.formGroup {
+	position: relative;
+	display: flex;
+}
+
+.formControl {
+	@include f250;
+
+	width: 100%;
+	background-color: $grey-100;
+	border-radius: 3px 3px 0 0;
+	color: $grey-900;
+	border: 1px solid rgba($grey-600, 0.05);
+	border-bottom-color: $grey-300;
+	padding: $sp-400 $sp-250;
+	transition: all 0.3s ease-out;
+
+	&::placeholder {
+		color: $grey-600;
+	}
+
+	.focused & {
+		background-color: rgba($primary-400, 0.05);
+		border-color: rgba($primary-400, 0.2);
+		border-bottom-color: rgba($primary-400, 0.5);
+		color: $primary-400;
+	}
+}
+
+.label {
+	@include f250;
+
+	position: absolute;
+	left: $sp-250;
+	color: $grey-700;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: all 0.2s ease-out;
+
+	.focused & {
+		@include f100;
+
+		top: $sp-50;
+		color: rgba($primary-400, 0.5);
+		transform: translateY(0);
+	}
+}
