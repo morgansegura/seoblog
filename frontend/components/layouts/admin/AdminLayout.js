@@ -17,14 +17,14 @@ const AdminLayout = ({ children, ...props }) => {
 	const handleToggleMenu = () => {
 		setToggleMenu(!toggleMenu)
 	}
-	console.log(props)
+
 	return (
 		<Admin>
 			<Header open={handleToggleMenu} />
 			<Container className={styles.container}>{children}</Container>
 			<Drawer
 				open={toggleMenu}
-				close={() => setToggleMenu(false)}
+				close={handleToggleMenu}
 				icon={<IconClose />}>
 				<div className={styles.menu}>
 					<div className={styles.menuTitle}>Tag</div>

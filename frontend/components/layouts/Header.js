@@ -23,20 +23,7 @@ const Header = ({ children, open, ...props }) => {
 			path: '/',
 		},
 	]
-	const userNavigation = [
-		{
-			id: 1,
-			label: 'Dashboard',
-			path: '/user',
-		},
-	]
-	const adminNavigation = [
-		{
-			id: 1,
-			label: 'Dashboard',
-			path: '/admin',
-		},
-	]
+
 	return (
 		<header className={styles.header} {...props}>
 			<Container className={styles.headerContainer}>
@@ -89,13 +76,12 @@ const Header = ({ children, open, ...props }) => {
 										className={styles.navItem}>
 										Signout
 									</div>
-									{open && (
-										<div
-											className={styles.navMenuIcon}
-											onClick={open}>
-											<IconMenu />
-										</div>
-									)}
+
+									<div
+										className={styles.navMenuIcon}
+										onClick={open}>
+										<IconMenu />
+									</div>
 								</>
 							)}
 						</>

@@ -1,19 +1,27 @@
 @import '~styles/utilities';
 
 .backdrop {
-	z-index: -1;
 	position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	opacity: 0;
-	background-color: rgba($grey-900, 0.5);
-	// transition: opacity 0.2s ease-in-out;
+	pointer-events: none;
+	background-color: rgba(0, 0, 0, 0.5);
+	-webkit-tap-highlight-color: transparent;
 
-	&.active {
-		z-index: 1;
+	&.fadeLoad {
+		opacity: 0;
+	}
+
+	&.fadeIn {
 		opacity: 1;
-		transition: opacity 0.3s ease-in-out;
+		transition: opacity 0.3s ease-in;
+	}
+
+	&.fadeOut {
+		opacity: 0;
+		transition: opacity 0.3s ease-out;
 	}
 }

@@ -1,10 +1,11 @@
-import { useRef, useState, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { useClickAway } from 'react-use'
 // Core Components
 import Overlay from '@core/utils/Overlay'
+import AnimateSlideToggle from '@core/utils/AnimateSlideToggle'
 // Icons
 import IconClose from '@core/icons/IconClose'
-
+// Styles
 import styles from './Drawer.module.scss'
 
 const Drawer = ({
@@ -17,35 +18,43 @@ const Drawer = ({
 	toggle,
 	...props
 }) => {
-	const [isOpen, setIsOpen] = useState(false)
-
 	const classes = givenClassName
 		? `${styles.drawer} ${givenClassName}`
 		: styles.drawer
 
 	const contentRef = useRef(null)
 
-	const handleToggle = () => {
-		setIsOpen(!isOpen)
-	}
-
 	useClickAway(contentRef, () => {
 		close()
 	})
 
+	console.log('open outside: ', open)
+
 	return (
 		<>
-			<div
-				ref={contentRef}
-				className={`${classes} ${open && styles.active}`}
-				{...props}>
-				{icon && (
-					<div className={styles.close} onClick={close}>
-						{icon ? icon : <IconClose />}
-					</div>
-				)}
-				{children}
-			</div>
+			<AnimateSlideToggle
+				in={open}
+				classes={{
+					appear: styles.slideLoad,
+					appearActive: styles.slideLoad,
+					appearDone: styles.slideLoad,
+					enter: styles.slideLoad,
+					enterActive: styles.slideIn,
+					enterDone: styles.slideIn,
+					exit: styles.slideOut,
+					exitActive: styles.slideOut,
+					exitDone: styles.slideLoad,
+				}}>
+				<div ref={contentRef} className={classes} {...props}>
+					{icon && (
+						<div className={styles.close} onClick={close}>
+							{icon ? icon : <IconClose />}
+						</div>
+					)}
+					{children}
+				</div>
+			</AnimateSlideToggle>
+
 			<Overlay open={open} />
 		</>
 	)
