@@ -1,0 +1,119 @@
+@import '~styles/utilities';
+
+.form {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid $grey-300;
+	padding: $sp-400;
+	border-radius: 6px;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.textInput {
+	@include f250;
+
+	background-color: $grey-200;
+	border-radius: 3px 3px 0 0;
+	color: $grey-900;
+	border-bottom: 1px solid $grey-300;
+	padding: $sp-200 $sp-250;
+	margin-bottom: $sp-400;
+
+	&::placeholder {
+		color: $grey-600;
+	}
+}
+
+.buttonBlock {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: $sp-300;
+	margin-bottom: $sp-300;
+}
+
+.button {
+	@include f250;
+
+	background-color: $success-400;
+	padding: $sp-50 $sp-300;
+	color: rgba($white, 0.85);
+	font-weight: 600;
+	border-radius: 3px;
+	transition: opacity 0.3s ease-out;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.tagButton {
+	@include f200;
+
+	display: flex;
+	align-items: center;
+	gap: $sp-200;
+	color: $grey-800;
+	background-color: $parchment-400;
+	padding: $sp-50 $sp-300;
+	border-radius: 3px;
+	border: 1px solid $grey-300;
+	transition: border-color 0.3s ease-out;
+
+	&:hover {
+		border-color: $grey-500;
+	}
+
+	&:active {
+		border-color: $grey-300;
+	}
+}
+
+.itemList {
+	display: flex;
+	gap: $sp-200;
+	margin-top: $sp-400;
+}
+
+.options {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.optionsToolbar {
+	z-index: 1;
+	top: -110%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.option {
+	@include f100;
+
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	color: $grey-800;
+	margin-right: -$sp-50;
+	transition: opacity 0.3s ease-out;
+
+	&:not(:first-child) {
+		border-left: 1px solid $grey-300;
+		padding-left: $sp-150;
+	}
+
+	svg {
+		width: 18px;
+		height: 18px;
+	}
+
+	g {
+		fill: $grey-600;
+	}
+
+	&:hover {
+		opacity: 0.5;
+	}
+}

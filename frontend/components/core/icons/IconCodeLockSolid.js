@@ -6,7 +6,6 @@ const IconCodeLockSolid = ({ ...props }) => {
 			height="48"
 			viewBox="0 0 48 48"
 			{...props}>
-			<title>pin-2</title>
 			<g fill="#212121">
 				<circle fill="#212121" cx="24" cy="7" r="5"></circle>{' '}
 				<circle fill="#212121" cx="40" cy="7" r="5"></circle>{' '}

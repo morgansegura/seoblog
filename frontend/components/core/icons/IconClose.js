@@ -6,7 +6,6 @@ const IconClose = ({ ...props }) => {
 			height="24"
 			viewBox="0 0 24 24"
 			{...props}>
-			<title>e-remove</title>
 			<g
 				strokeLinecap="square"
 				strokeLinejoin="miter"

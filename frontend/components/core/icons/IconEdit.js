@@ -6,7 +6,6 @@ const IconEdit = ({ ...props }) => {
 			height="24"
 			viewBox="0 0 24 24"
 			{...props}>
-			<title>pencil</title>
 			<g
 				strokeLinecap="square"
 				strokeLinejoin="miter"

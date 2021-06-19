@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 // Auth Components
-import Category from '@auth/widgets/Category'
-import Tags from '@auth/widgets/Tags'
+import CategoryWidget from '@auth/widgets/CategoryWidget'
+import TagWidget from '@auth/widgets/TagWidget'
 // Core Components
 import Text from '@core/typography/Text'
 // Layout Components
@@ -16,8 +16,11 @@ const PostMeta = ({ title, children, ...props }) => {
 			<Text as="h1" className={styles.title}>
 				{title}
 			</Text>
-			<Category />
-			<Tags />
+			<CategoryWidget />
+			<br />
+			<br />
+			<br />
+			<TagWidget />
 		</AdminLayout>
 	)
 }

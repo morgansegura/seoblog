@@ -6,7 +6,6 @@ const IconSkull = ({ ...props }) => {
 			height="24"
 			viewBox="0 0 24 24"
 			{...props}>
-			<title>skull</title>
 			<g
 				strokeLinecap="square"
 				strokeLinejoin="miter"

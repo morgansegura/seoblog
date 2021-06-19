@@ -6,7 +6,6 @@ const IconMenu = ({ ...props }) => {
 			height="24"
 			viewBox="0 0 24 24"
 			{...props}>
-			<title>menu-6</title>
 			<g fill="#212121">
 				<path d="M23,10H1c-0.6,0-1,0.4-1,1v2c0,0.6,0.4,1,1,1h22c0.6,0,1-0.4,1-1v-2C24,10.4,23.6,10,23,10z"></path>{' '}
 				<path

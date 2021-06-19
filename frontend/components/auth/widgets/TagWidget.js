@@ -1,23 +1,18 @@
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Router from 'next/router'
-import { isAuth, getCookie } from '@actions/auth'
-import {
-	createCategory,
-	getCategories,
-	removeCategory,
-} from '@actions/category'
+import { getCookie } from '@actions/auth'
+import { createTag, getTags, removeTag } from '@actions/tag'
 // Core Components
 import Button from '@core/interaction/Button'
 import TextField from '@core/inputs/TextField'
 import Text from '@core/typography/Text'
 import AnimateFadeToggle from '@core/utils/AnimateFadeToggle'
+import Prompt from '@core/data-display/Prompt'
 // Icons
 import IconDelete from '@core/icons/IconDelete'
 // Styles
-import styles from './Category.module.scss'
+import styles from './TagWidget.module.scss'
 
-const CategoryWidget = ({ className: givenClassName, title }) => {
+const TagWidget = ({ className: givenClassName, title }) => {
 	const classes = givenClassName
 		? `${styles.widget} ${givenClassName}`
 		: styles.widget
@@ -26,33 +21,33 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 		name: '',
 		error: false,
 		success: false,
-		categories: [],
+		tags: [],
 		removed: false,
 		reload: false,
 	})
 
-	const { name, error, success, categories, removed, reload } = values
+	const { name, error, success, tags, removed, reload } = values
 	const token = getCookie('token')
 
-	const loadCategories = () => {
-		getCategories().then(data => {
+	const loadTags = () => {
+		getTags().then(data => {
 			if (data.error) {
 				console.log(data.error)
 			} else {
 				setValues({
 					...values,
-					categories: data,
+					tags: data,
 				})
 			}
 		})
 	}
 
 	useEffect(() => {
-		loadCategories()
+		loadTags()
 	}, [reload])
 
 	const handleDelete = slug => {
-		removeCategory(slug, token).then(data => {
+		removeTag(slug, token).then(data => {
 			if (data.error) {
 				console.log(data.error)
 			} else {
@@ -70,7 +65,7 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 
 	const handleDeletePrompt = item => {
 		let answer = window.confirm(
-			`Are you sure you want to delete the category "${item.name}"`
+			`Are you sure you want to delete the tag "${item.name}"`
 		)
 
 		if (answer) {
@@ -78,7 +73,7 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 		}
 	}
 
-	const CategoryButton = ({ item }) => {
+	const TagButton = ({ item }) => {
 		const [displayOptions, setDisplayOptions] = useState(false)
 
 		const handleDisplayOptions = id => {
@@ -98,8 +93,9 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 						exit: styles.fadeOut,
 					}}>
 					<div
+						title={`Delete Tag: ${item.name}`}
 						className={styles.option}
-						onClick={() => handleDeletePrompt(item._id)}>
+						onClick={() => handleDeletePrompt(item)}>
 						<IconDelete />
 					</div>
 				</AnimateFadeToggle>
@@ -107,11 +103,11 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 		)
 	}
 
-	const displayCategories = () => {
-		return categories.map((c, i) => {
+	const displayTags = () => {
+		return tags.map((c, i) => {
 			return (
 				<div key={i} className={styles.options}>
-					<CategoryButton item={c} />
+					<TagButton item={c} />
 				</div>
 			)
 		})
@@ -130,7 +126,7 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		createCategory({ name }, token).then(data => {
+		createTag({ name }, token).then(data => {
 			if (data.error) {
 				setValues({
 					...values,
@@ -152,26 +148,25 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 
 	const showError = () => {
 		if (error) {
-			return <p>Ther category already exitsts</p>
+			return <p>There tag already exitsts</p>
 		}
 	}
 	const showSuccess = () => {
 		if (success) {
-			return <p>The category was successfully created.</p>
+			return <p>The tag was successfully created.</p>
 		}
 	}
 	const showRemoved = () => {
 		if (removed) {
-			return <p>The category has been removed.</p>
+			return <p>The tag has been removed.</p>
 		}
 	}
 
-	const newCategoryForm = () => (
+	const newTagForm = () => (
 		<form onSubmit={handleSubmit} className={styles.form}>
 			<TextField
 				type="text"
-				// className={styles.textInput}
-				label="Type your real name"
+				label="Type a new tag name"
 				value={name}
 				onChange={handleChange}
 				required
@@ -188,11 +183,11 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 		<>
 			<div className={classes}>
 				{title && <Text as="h3">{title}</Text>}
-				{newCategoryForm()}
-				<div className={styles.categoryList}>{displayCategories()}</div>
+				{newTagForm()}
+				<div className={styles.itemList}>{displayTags()}</div>
 			</div>
 		</>
 	)
 }
 
-export default CategoryWidget
+export default TagWidget
