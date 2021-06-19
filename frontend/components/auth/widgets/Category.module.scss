@@ -51,6 +51,9 @@
 .tagButton {
 	@include f200;
 
+	display: flex;
+	align-items: center;
+	gap: $sp-100;
 	color: $grey-800;
 	background-color: $parchment-400;
 	padding: $sp-50 $sp-300;
@@ -81,6 +84,8 @@
 .option {
 	@include f100;
 
+	display: flex;
+	align-items: center;
 	cursor: pointer;
 	color: $grey-800;
 	transition: opacity 0.3s ease-out;
@@ -91,19 +96,11 @@
 	}
 
 	svg {
-		width: 16px;
-		height: 16px;
+		width: 18px;
+		height: 18px;
 	}
 
-	g,
-	path,
-	ellipse {
-		stroke: $clay-600;
-		outline: $clay-600;
-		fill: $grey-700;
-	}
-
-	&:hover {
-		opacity: 0.5;
+	g {
+		fill: $grey-600;
 	}
 }

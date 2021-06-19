@@ -7,15 +7,8 @@ const Overlay = ({ className: givenClassName, children, open, ...props }) => {
 		<AnimateFadeToggle
 			in={open}
 			classes={{
-				appear: styles.fadeLoad,
-				appearActive: styles.fadeLoad,
-				appearDone: styles.fadeLoad,
-				enter: styles.fadeLoad,
-				enterActive: styles.fadeIn,
 				enterDone: styles.fadeIn,
 				exit: styles.fadeOut,
-				exitActive: styles.fadeOut,
-				exitDone: styles.fadeOut,
 			}}>
 			<div className={styles.backdrop} {...props}>
 				{children}

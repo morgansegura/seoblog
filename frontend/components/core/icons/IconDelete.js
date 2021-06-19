@@ -6,23 +6,9 @@ const IconDelete = ({ ...props }) => {
 			height="24"
 			viewBox="0 0 24 24"
 			{...props}>
-			<title>bucket</title>
-			<g
-				strokeLinecap="square"
-				strokeLinejoin="miter"
-				strokeWidth="2"
-				fill="none"
-				stroke="#212121"
-				strokeMiterlimit="10">
-				<path
-					d="M3.013,4.159l2,16.432C5.148,21.929,8.22,23,12,23s6.852-1.071,6.987-2.409l2-16.432"
-					strokeLinecap="butt"></path>
-				<ellipse
-					cx="12"
-					cy="4"
-					rx="9"
-					ry="3"
-					stroke="#212121"></ellipse>
+			<title>ic_delete_24px</title>
+			<g fill="#212121">
+				<path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path>
 			</g>
 		</svg>
 	)

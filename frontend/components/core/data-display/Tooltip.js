@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
+// Base Components
+import AnimateFadeToggle from '@core/utils/AnimateFadeToggle'
 // Styles
 import styles from './Tooltip.module.scss'
 
@@ -16,13 +17,14 @@ const ToolTip = ({ className: givenClassName, children, text, ...props }) => {
 			{...props}
 			onMouseEnter={() => setShowTooltip(true)}
 			onMouseLeave={() => setShowTooltip(false)}>
-			<TransitionGroup component={null}>
-				{showTooltip && (
-					<CSSTransition classNames="tooltip" timeout={300}>
-						<div className={classes}>{text}</div>
-					</CSSTransition>
-				)}
-			</TransitionGroup>
+			<AnimateFadeToggle
+				in={showTooltip}
+				classes={{
+					enterDone: styles.fadeIn,
+					exit: styles.fadeOut,
+				}}>
+				<div className={classes}>{text}</div>
+			</AnimateFadeToggle>
 			{children}
 		</div>
 	)

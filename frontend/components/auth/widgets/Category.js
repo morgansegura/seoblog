@@ -11,20 +11,16 @@ import {
 import Button from '@core/interaction/Button'
 import TextField from '@core/inputs/TextField'
 import Text from '@core/typography/Text'
-import Tooltip from '@core/data-display/Tooltip'
+import AnimateFadeToggle from '@core/utils/AnimateFadeToggle'
 // Icons
-import IconEdit from '@core/icons/IconEdit'
 import IconDelete from '@core/icons/IconDelete'
 // Styles
 import styles from './Category.module.scss'
 
-const Category = ({ className: givenClassName, title }) => {
+const CategoryWidget = ({ className: givenClassName, title }) => {
 	const classes = givenClassName
 		? `${styles.widget} ${givenClassName}`
 		: styles.widget
-
-	const [focused, setFocused] = useState(false)
-	const [displayOptions, setDisplayOptions] = useState(false)
 
 	const [values, setValues] = useState({
 		name: '',
@@ -72,10 +68,6 @@ const Category = ({ className: givenClassName, title }) => {
 		})
 	}
 
-	const handleDisplayOptions = () => {
-		setDisplayOptions(!displayOptions)
-	}
-
 	const handleDeletePrompt = item => {
 		let answer = window.confirm(
 			`Are you sure you want to delete the category "${item.name}"`
@@ -86,32 +78,40 @@ const Category = ({ className: givenClassName, title }) => {
 		}
 	}
 
+	const CategoryButton = ({ item }) => {
+		const [displayOptions, setDisplayOptions] = useState(false)
+
+		const handleDisplayOptions = id => {
+			setDisplayOptions(!displayOptions)
+		}
+
+		return (
+			<Button
+				onClick={() => handleDisplayOptions(item._id)}
+				className={styles.tagButton}>
+				<div>{item.name}</div>
+				<AnimateFadeToggle
+					in={displayOptions}
+					timeout={0}
+					classes={{
+						enterDone: styles.fadeIn,
+						exit: styles.fadeOut,
+					}}>
+					<div
+						className={styles.option}
+						onClick={() => handleDeletePrompt(item._id)}>
+						<IconDelete />
+					</div>
+				</AnimateFadeToggle>
+			</Button>
+		)
+	}
+
 	const displayCategories = () => {
 		return categories.map((c, i) => {
 			return (
-				<div
-					key={i}
-					className={`${styles.options} ${
-						displayOptions && styles.active
-					}`}>
-					<Tooltip
-						className={styles.optionsToolbar}
-						text={
-							<>
-								<div
-									className={styles.option}
-									onClick={() => handleDeletePrompt(c)}>
-									<IconDelete />
-								</div>
-							</>
-						}>
-						<Button
-							onClick={() => handleDisplayOptions(c._id)}
-							className={styles.tagButton}>
-							{c.name}
-							{console.log(c)}
-						</Button>
-					</Tooltip>
+				<div key={i} className={styles.options}>
+					<CategoryButton item={c} />
 				</div>
 			)
 		})
@@ -195,4 +195,4 @@ const Category = ({ className: givenClassName, title }) => {
 	)
 }
 
-export default Category
+export default CategoryWidget

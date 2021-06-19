@@ -21,6 +21,16 @@
 	gap: $sp-150;
 	color: $grey-800;
 
+	&.fadeIn {
+		opacity: 1;
+		transition: opacity 0.3s ease-in;
+	}
+
+	&.fadeOut {
+		opacity: 0;
+		transition: opacity 0.3s ease-out;
+	}
+
 	&::before {
 		content: '';
 		display: block;
@@ -37,27 +47,4 @@
 		bottom: -7px;
 		transform: translateX(-50%);
 	}
-}
-
-.tootip-enter {
-	opacity: 0.01;
-	transform: scale(1.1);
-	transition: all 300ms;
-}
-
-.tootip-enter-active {
-	opacity: 1;
-	transform: scale(1);
-	transition: all 300ms;
-}
-
-.tootip-exit {
-	opacity: 1;
-	transform: scale(1);
-}
-
-.tootip-exit-active {
-	opacity: 0.01;
-	transform: scale(1.1);
-	transition: all 300ms;
 }

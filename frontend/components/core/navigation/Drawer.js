@@ -28,22 +28,13 @@ const Drawer = ({
 		close()
 	})
 
-	console.log('open outside: ', open)
-
 	return (
 		<>
 			<AnimateSlideToggle
 				in={open}
 				classes={{
-					appear: styles.slideLoad,
-					appearActive: styles.slideLoad,
-					appearDone: styles.slideLoad,
-					enter: styles.slideLoad,
-					enterActive: styles.slideIn,
 					enterDone: styles.slideIn,
 					exit: styles.slideOut,
-					exitActive: styles.slideOut,
-					exitDone: styles.slideLoad,
 				}}>
 				<div ref={contentRef} className={classes} {...props}>
 					{icon && (

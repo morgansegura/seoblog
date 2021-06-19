@@ -32,8 +32,6 @@ const Signup = () => {
 		const user = { name, email, password }
 
 		signup(user).then(data => {
-			console.log(data)
-			console.log(data.error)
 			if (data.error) {
 				setValues({ ...values, error: data.error, loading: false })
 			} else {

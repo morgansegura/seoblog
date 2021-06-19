@@ -11,10 +11,6 @@
 	background-color: rgba(0, 0, 0, 0.5);
 	-webkit-tap-highlight-color: transparent;
 
-	&.fadeLoad {
-		opacity: 0;
-	}
-
 	&.fadeIn {
 		opacity: 1;
 		transition: opacity 0.3s ease-in;
