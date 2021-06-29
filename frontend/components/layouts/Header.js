@@ -9,7 +9,7 @@ import Container from '@core/structure/Container'
 import IconSkull from '@core/icons/IconSkull'
 import IconMenu from '@core/icons/IconMenu'
 // Styles
-import styles from './Header.module.scss'
+import * as s from './Header.styled'
 
 Router.onRouteChangeStart = url => NProgress.start()
 Router.onRouteChangeComplete = url => NProgress.done()
@@ -25,79 +25,74 @@ const Header = ({ children, open, ...props }) => {
 	]
 
 	return (
-		<header className={styles.header} {...props}>
-			<Container className={styles.headerContainer}>
-				<Link href="/">
-					<a className={styles.logo}>
-						<IconSkull />
-					</a>
-				</Link>
-				<nav className={styles.nav}>
-					{navigation &&
-						navigation.map(nav => (
-							<Link key={nav.id} href={nav.path}>
-								<a className={styles.navItem}>{nav.label}</a>
-							</Link>
-						))}
-					{isAuth() ? (
-						<>
-							{isAuth().role === 0 && (
-								<>
-									<Link href={`/user`}>
-										<a className={styles.navItem}>
-											Dashboard
-										</a>
-									</Link>
+		<s.Header {...props}>
+			<Container>
+				<s.HeaderContainer>
+					<Link href="/">
+						<s.Logo>
+							<IconSkull />
+						</s.Logo>
+					</Link>
+					<s.Nav>
+						{navigation &&
+							navigation.map(nav => (
+								<Link key={nav.id} href={nav.path}>
+									<s.NavItem>{nav.label}</s.NavItem>
+								</Link>
+							))}
+						{isAuth() ? (
+							<>
+								{isAuth().role === 0 && (
+									<>
+										<Link href={`/user`}>
+											<s.NavItem>Dashboard</s.NavItem>
+										</Link>
 
-									<div
-										onClick={() =>
-											signout(() =>
-												Router.replace(`/signin`)
-											)
-										}
-										className={styles.navItem}>
-										Signout
-									</div>
-								</>
-							)}
-							{isAuth().role === 1 && (
-								<>
-									<Link href={`/admin`}>
-										<a className={styles.navItem}>
-											Dashboard
-										</a>
-									</Link>
-									<div
-										onClick={() =>
-											signout(() =>
-												Router.replace(`/signin`)
-											)
-										}
-										className={styles.navItem}>
-										Signout
-									</div>
+										<div
+											onClick={() =>
+												signout(() =>
+													Router.replace(`/signin`)
+												)
+											}
+											className={styles.navItem}>
+											Signout
+										</div>
+									</>
+								)}
+								{isAuth().role === 1 && (
+									<>
+										<Link href={`/admin`}>
+											<s.NavItem>Dashboard</s.NavItem>
+										</Link>
+										<s.NavItemAlt
+											onClick={() =>
+												signout(() =>
+													Router.replace(`/signin`)
+												)
+											}>
+											Signout
+										</s.NavItemAlt>
 
-									<div
-										className={styles.navMenuIcon}
-										onClick={open}>
-										<IconMenu />
-									</div>
-								</>
-							)}
-						</>
-					) : (
-						<>
-							<Link href="/signup">
-								<a className={styles.navItem}>Signup</a>
-							</Link>
-							<Link href="/signin">
-								<a className={styles.navItem}>Signin</a>
-							</Link>
-						</>
-					)}
-				</nav>
+										<s.NavIcon onClick={open}>
+											<IconMenu />
+										</s.NavIcon>
+									</>
+								)}
+							</>
+						) : (
+							<>
+								<Link href="/signup">
+									<s.NavItem>Signup</s.NavItem>
+								</Link>
+								<Link href="/signin">
+									<s.NavItem>Signin</s.NavItem>
+								</Link>
+							</>
+						)}
+					</s.Nav>
+				</s.HeaderContainer>
 			</Container>
-		</header>
+		</s.Header>
 	)
 }
 

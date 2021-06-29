@@ -1,29 +1,15 @@
 import Link from 'next/link'
-import styles from './Button.module.scss'
+import Ripple from '@core/utils/Ripple'
 
-const Button = ({
-	children,
-	className: givenClass,
-	as: Tag = 'div',
-	...props
-}) => {
-	const classes = givenClass
-		? `${styles.button} ${givenClass}`
-		: styles.button
+// Styled
+import * as s from './Button.styled'
+
+const Button = ({ children, as = 'div', ...props }) => {
 	return (
-		<>
-			{props.href ? (
-				<Link href={props.href}>
-					<a className={classes} {...props}>
-						{children}
-					</a>
-				</Link>
-			) : (
-				<Tag className={classes} {...props}>
-					{children}
-				</Tag>
-			)}
-		</>
+		<s.Button as={as} {...props}>
+			<div>{children}</div>
+			<Ripple />
+		</s.Button>
 	)
 }
 

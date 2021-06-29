@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 // Core Components
-import Container from '@core/structure/Container'
 import Drawer from '@core/navigation/Drawer'
 import Admin from '@auth/Admin'
 // Layout Components
@@ -21,7 +20,7 @@ const AdminLayout = ({ children, ...props }) => {
 	return (
 		<Admin>
 			<Header open={handleToggleMenu} />
-			<Container className={styles.container}>{children}</Container>
+			{children}
 			<Drawer
 				open={toggleMenu}
 				close={handleToggleMenu}

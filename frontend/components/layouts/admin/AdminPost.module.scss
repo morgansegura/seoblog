@@ -1,0 +1,44 @@
+@import '~styles/utilities';
+
+.container {
+}
+
+.content {
+}
+
+.navContainer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.nav {
+	padding-top: $sp-400;
+	padding-bottom: $sp-400;
+	margin-top: $sp-600;
+	margin-bottom: $sp-600;
+	border-radius: 4px;
+	border: 1px solid $grey-100;
+}
+
+.navItem {
+	@include f200;
+
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	color: $grey-800;
+	transition: color 0.3s ease-out;
+
+	&:hover {
+		color: $grey-900;
+	}
+}
+
+.drawer {
+	background-color: $white;
+	padding: 80px 32px;
+	min-height: 400px;
+	box-shadow: -4px 0px 20px rgba(0, 0, 0, 0.15);
+}

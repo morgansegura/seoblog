@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useClickAway } from 'react-use'
 // Core Components
 import Overlay from '@core/utils/Overlay'
+import Ripple from '@core/utils/Ripple'
 import AnimateSlideToggle from '@core/utils/AnimateSlideToggle'
 // Icons
 import IconClose from '@core/icons/IconClose'
@@ -14,13 +15,29 @@ const Drawer = ({
 	close,
 	icon,
 	open,
-	overlay,
+	shadow,
 	toggle,
+	location,
 	...props
 }) => {
-	const classes = givenClassName
+	let classes = givenClassName
 		? `${styles.drawer} ${givenClassName}`
 		: styles.drawer
+
+	if (location === 'top') {
+		classes = classes + ' ' + styles.top
+	}
+	if (location === undefined || location === 'right') {
+		classes = classes + ' ' + styles.right
+	}
+	if (location === 'bottom') {
+		classes = classes + ' ' + styles.bottom
+	}
+	if (location === 'left') {
+		classes = classes + ' ' + styles.letft
+	}
+
+	console.log(location)
 
 	const contentRef = useRef(null)
 
@@ -40,13 +57,14 @@ const Drawer = ({
 					{icon && (
 						<div className={styles.close} onClick={close}>
 							{icon ? icon : <IconClose />}
+							<Ripple duration="500" color="#cdcdcd" />
 						</div>
 					)}
 					{children}
 				</div>
 			</AnimateSlideToggle>
 
-			<Overlay open={open} />
+			{shadow !== false && <Overlay open={open} />}
 		</>
 	)
 }

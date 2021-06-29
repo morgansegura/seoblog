@@ -1,0 +1,63 @@
+@import '~styles/utilities';
+
+.container {
+	@include f200;
+
+	position: fixed;
+	z-index: 1100;
+	bottom: 0;
+	right: $sp-900;
+	padding: $sp-200;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	box-shadow: 0 30px 60px -12px rgb(50 50 93 / 25%),
+		0 18px 36px -18px rgb(0 0 0 / 30%), 0 -12px 36px -8px rgb(0 0 0 / 3%);
+
+	svg {
+		margin-right: $sp-200;
+		width: 20px;
+	}
+
+	&.fadeIn {
+		opacity: 1;
+		transform: translateY(-$sp-900);
+		transition: all 0.3s ease-in-out;
+	}
+
+	&.fadeOut {
+		opacity: 0;
+		transform: translateY(100%);
+		transition: all 0.3s ease-in-out;
+	}
+
+	&.error {
+		background-color: rgba($warning-400, 0.95);
+		color: $white;
+
+		svg,
+		svg g,
+		svg line,
+		svg circle,
+		svg polyline,
+		svg path {
+			stroke: white;
+		}
+	}
+
+	&.success {
+		color: $white;
+
+		svg,
+		svg g,
+		svg line,
+		svg circle,
+		svg polyline,
+		svg path {
+			stroke: white;
+		}
+		background-color: rgba($success-400, 0.95);
+	}
+}

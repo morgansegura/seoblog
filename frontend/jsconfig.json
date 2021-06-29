@@ -2,12 +2,14 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
+            "@node_modules/*": ["node_modules/*"],
             "@actions/*": ["actions/*"],
             "@auth/*": ["components/auth/*"],
             "@components/*": ["components/*"],
             "@core/*": ["components/core/*"],
             "@layouts/*": ["components/layouts/*"],
             "@styles/*": ["styles/*"],
+            "@styled/*": ["styled/*"],
         }
     },
     "exclude": ["node_modules"]

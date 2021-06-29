@@ -1,1 +1,20 @@
 @import '~styles/utilities';
+
+.container {
+}
+
+.slidingContent {
+}
+
+.nav {
+	padding-top: $sp-400;
+	padding-bottom: $sp-400;
+	margin-bottom: $sp-600;
+	background-color: $grey-100;
+}
+
+.navItem {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}

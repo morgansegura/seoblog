@@ -1,20 +1,20 @@
-import { forwardRef } from 'react'
-import styles from './Text.module.scss'
+// import { forwardRef } from 'react'
+import * as s from './Text.styled'
 
-const Text = (
-    { size, children, className: givenClassName, as: Tag = 'div', ...props },
-    ref,
-) => {
-    // Need explicit null and undefined check as size could be falsy with the valid size of 0
-    const className =
-        styles['f' + (size !== null && size !== undefined ? size : 300)] +
-        (givenClassName ? ' ' + givenClassName : '')
+const Text = ({
+	size,
+	children,
+	className: givenClassName,
+	as = 'div',
+	...props
+}) => {
+	const className = givenClassName
 
-    return (
-        <Tag ref={ref} className={className} {...props}>
-            {children}
-        </Tag>
-    )
+	return (
+		<s.Tag as={as} className={className} size={size} {...props}>
+			{children}
+		</s.Tag>
+	)
 }
 
-export default forwardRef(Text)
+export default Text

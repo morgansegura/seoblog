@@ -1,6 +1,8 @@
 import Head from 'next/head'
 
-import '@styles/globals.scss'
+// Styled Components Global
+import { GlobalStyle } from '@styled/globalStyles'
+// import '@styles/globals.scss'
 
 const MyApp = ({ Component, pageProps }) => {
 	return (
@@ -12,6 +14,7 @@ const MyApp = ({ Component, pageProps }) => {
 					rel="stylesheet"
 				/>
 			</Head>
+			<GlobalStyle />
 			<Component {...pageProps} />
 		</>
 	)

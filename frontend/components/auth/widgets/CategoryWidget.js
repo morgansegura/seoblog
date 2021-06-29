@@ -10,6 +10,7 @@ import Button from '@core/interaction/Button'
 import TextField from '@core/inputs/TextField'
 import Text from '@core/typography/Text'
 import AnimateFadeToggle from '@core/utils/AnimateFadeToggle'
+import Card from '@core/surface/Card'
 // Icons
 import IconDelete from '@core/icons/IconDelete'
 // Styles
@@ -166,21 +167,23 @@ const CategoryWidget = ({ className: givenClassName, title }) => {
 	}
 
 	const newCategoryForm = () => (
-		<form onSubmit={handleSubmit} className={styles.form}>
-			<TextField
-				type="text"
-				// className={styles.textInput}
-				label="Type a new category name"
-				value={name}
-				onChange={handleChange}
-				required
-			/>
-			<div className={styles.buttonBlock}>
-				<Button as="button" type="submit" className={styles.button}>
-					Create
-				</Button>
-			</div>
-		</form>
+		<Card shadow={5}>
+			<form onSubmit={handleSubmit} className={styles.form}>
+				<TextField
+					type="text"
+					// className={styles.textInput}
+					label="Type a new category name"
+					value={name}
+					onChange={handleChange}
+					required
+				/>
+				<div className={styles.buttonBlock}>
+					<Button as="button" type="submit" className={styles.button}>
+						Create
+					</Button>
+				</div>
+			</form>
+		</Card>
 	)
 
 	return (

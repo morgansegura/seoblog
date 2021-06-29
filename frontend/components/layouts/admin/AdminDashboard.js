@@ -11,11 +11,12 @@ import styles from './AdminDashboard.module.scss'
 const AdminDashboard = ({ title, children, ...props }) => {
 	return (
 		<AdminLayout>
-			Anything
 			<Text as="h1" className={styles.title}>
 				{title}
 			</Text>
-			Text
+			<Link href="/admin/post-meta">
+				<a>Post Meta (Tags and Categories)</a>
+			</Link>
 		</AdminLayout>
 	)
 }
