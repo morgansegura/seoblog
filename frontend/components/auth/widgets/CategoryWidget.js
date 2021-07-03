@@ -10,7 +10,7 @@ import Button from '@core/interaction/Button'
 import TextField from '@core/inputs/TextField'
 import Text from '@core/typography/Text'
 import AnimateFadeToggle from '@core/utils/AnimateFadeToggle'
-import Card from '@core/surface/Card'
+import Card from '@components/core/surface/Box'
 // Icons
 import IconDelete from '@core/icons/IconDelete'
 // Styles

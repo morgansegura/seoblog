@@ -26,7 +26,7 @@ const Header = ({ children, open, ...props }) => {
 
 	return (
 		<s.Header {...props}>
-			<Container>
+			<Container buffer={false}>
 				<s.HeaderContainer>
 					<Link href="/">
 						<s.Logo>

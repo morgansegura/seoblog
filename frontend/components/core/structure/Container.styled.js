@@ -1,41 +1,81 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
+import { sp, widthMax, widthMin, gutter } from '@styled/spacing'
+import { lighten, rgba, readableColor } from 'polished'
+import { white, black } from '@styled/colors'
 
-export const Container = styled(props => props.as)``
+export const Container = styled(props => props.as)`
+	${({ maxWidth }) => {
+		if (maxWidth) {
+			return `max-width: ${widthMin[`${maxWidth}`]};`
+		} else {
+			return `
+                @media(min-width: ${widthMin['sm']}) {
+                    max-width: ${widthMax['xs']};
+                }
+                @media(min-width: ${widthMin['md']}) {
+                    max-width: ${widthMax['sm']};
+                }
+                @media(min-width: ${widthMin['lg']}) {
+                    max-width: ${widthMax['md']};
+                }
+                @media(min-width: ${widthMin['xl']}) {
+                    max-width: ${widthMax['lg']};
+                }
+                @media(min-width: ${widthMin['xxl']}) {
+                    max-width: ${widthMax['xl']};
+                }
+                @media(min-width: ${widthMin['xxxl']}) {
+                    max-width: ${widthMax['xxl']};
+                }
+            `
+		}
+	}}
 
-// .container {
-// 	width: 100%;
-// 	margin-left: auto;
-// 	margin-right: auto;
-// 	padding-left: $sp-400;
-// 	padding-right: $sp-400;
-// 	box-sizing: border-box;
-// 	max-width: $screen-sm;
+	${({ gutters }) => {
+		if (gutters === true) {
+			return `
+                padding-left: ${gutter['md']};
+                padding-right: ${gutter['md']};
+            `
+		} else if (['sm', 'md', 'lg', 'xl'].includes(gutters)) {
+			return `
+                padding-left: ${gutter[gutters]};
+                padding-right: ${gutter[gutters]};
+            `
+		}
+	}}
 
-// 	@include md {
-// 		max-width: $screen-md;
-// 	}
 
-// 	@include lg {
-// 		max-width: $screen-lg;
-// 	}
+	${({ auto }) => {
+		if (auto) {
+			return `
+                margin-left: auto;
+                margin-right: auto;
+            `
+		}
+	}}
 
-// 	@include xl {
-// 		max-width: $screen-xl;
-// 	}
-// }
+	${({ fill }) => {
+		if (fill) {
+			return `
+                color: ${readableColor(fill, white, black, true)};
+                background-color: ${fill};
 
-// .container.sm {
-// 	max-width: $screen-sm;
-// }
+                div span {
+                    background-color: ${rgba(readableColor(fill), 0.75)};
+                }
 
-// .container.md {
-// 	max-width: $screen-md;
-// }
-
-// .container.lg {
-// 	max-width: $screen-lg;
-// }
-
-// .container.xl {
-// 	max-width: $screen-xl;
-// }
+                &:hover {
+                    color: ${lighten(
+						0.2,
+						readableColor(fill, white, black, true)
+					)};
+                    background-color: ${lighten(0.1, fill)};
+                }
+            `
+		} else {
+			return false
+		}
+	}}
+`

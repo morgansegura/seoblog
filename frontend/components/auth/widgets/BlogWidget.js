@@ -9,7 +9,7 @@ import { createBlog } from '@actions/blog'
 // Core Components
 import Button from '@core/interaction/Button'
 import TextField from '@core/inputs/TextField'
-import Card from '@core/surface/Card'
+import Card from '@components/core/surface/Box'
 import Toast from '@core/data-display/Toast'
 // Icons
 import IconWarning from '@core/icons/IconWarning'

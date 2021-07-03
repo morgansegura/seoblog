@@ -2,174 +2,128 @@
 import BaseLayout from '@layouts/BaseLayout'
 // Core
 import Container from '@core/structure/Container'
-import Button from '@core/interaction/Button'
 import Text from '@core/typography/Text'
-
-// Styled
-import * as s from './Landing.styled'
-import * as color from '@styled/colors'
+import Box from '@core/surface/Box'
 
 const Landing = ({ title }) => {
 	return (
 		<BaseLayout>
-			<Container style={{ padding: '1rem' }}>
-				<Text as="p" size="400">
-					ello
+			<Container>
+				<Text
+					as="h1"
+					size="800"
+					style={{
+						display: 'flex',
+						marginTop: '3rem',
+						marginBottom: '3rem',
+					}}>
+					Shadow Small
 				</Text>
-				<Button
+				<div
 					style={{
-						marginTop: '1rem',
-						marginLeft: '1rem',
-						marginBottom: '1rem',
-					}}
-					className="Yippie"
-					as="button"
-					sm
-					secondary
-					outline
-					shadow={1}>
-					{title}
-				</Button>
-				<Button
-					style={{
-						marginTop: '1rem',
-						marginLeft: '1rem',
-						marginBottom: '1rem',
-					}}
-					className="Yippie"
-					as="button"
-					sm
-					primary
-					radius={4}
-					// outline
-					shadow={4}>
-					{title}
-				</Button>
-				<Button
-					style={{
-						marginTop: '1rem',
-						marginLeft: '1rem',
-						marginBottom: '1rem',
-					}}
-					className="Yippie"
-					as="button"
-					sm
-					shadow={3}>
-					{title}
-				</Button>
-				<Button
-					style={{
-						marginTop: '1rem',
-						marginLeft: '1rem',
-						marginBottom: '1rem',
-					}}
-					className="Yippie"
-					as="button"
-					sm
-					shadow={4}>
-					{title}
-				</Button>
-				<Button
-					style={{
-						marginTop: '1rem',
-						marginLeft: '1rem',
-						marginBottom: '1rem',
-					}}
-					className="Yippie"
-					as="button"
-					sm
-					shadow={5}>
-					{title}
-				</Button>
-				<Button
-					style={{
-						marginTop: '1rem',
-						marginLeft: '1rem',
-						marginBottom: '1rem',
-					}}
-					className="Yippie"
-					as="button"
-					sm
-					shadow={6}>
-					{title}
-				</Button>
-
-				<s.Grid>
-					<s.Column className="primary">
-						{Object.entries(color.primary).map(([key]) => {
-							return (
-								<div key={key} className={`primary-${key}`}>
-									{`primary ${key}`}
-								</div>
-							)
-						})}
-					</s.Column>
-					<s.Column className="secondary">
-						{Object.entries(color.secondary).map(([key]) => {
-							return (
-								<div key={key} className={`secondary-${key}`}>
-									{`secondary ${key}`}
-								</div>
-							)
-						})}
-					</s.Column>
-					<s.Column className="warning">
-						{Object.entries(color.warning).map(([key]) => {
-							return (
-								<div key={key} className={`warning-${key}`}>
-									{`warning ${key}`}
-								</div>
-							)
-						})}
-					</s.Column>
-					<s.Column className="danger">
-						{Object.entries(color.danger).map(([key]) => {
-							return (
-								<div key={key} className={`danger-${key}`}>
-									{`danger ${key}`}
-								</div>
-							)
-						})}
-					</s.Column>
-					<s.Column className="success">
-						{Object.entries(color.success).map(([key]) => {
-							return (
-								<div key={key} className={`success-${key}`}>
-									{`success ${key}`}
-								</div>
-							)
-						})}
-					</s.Column>
-				</s.Grid>
-				<s.Grid>
-					<s.Column className="grey">
-						{Object.entries(color.grey).map(([key]) => {
-							return (
-								<div key={key} className={`grey-${key}`}>
-									{`grey ${key}`}
-								</div>
-							)
-						})}
-					</s.Column>
-					<s.Column className="parchment">
-						{Object.entries(color.parchment).map(([key]) => {
-							return (
-								<div key={key} className={`parchment-${key}`}>
-									{`parchment ${key}`}
-								</div>
-							)
-						})}
-					</s.Column>
-					<s.Column className="clay">
-						{Object.entries(color.clay).map(([key]) => {
-							return (
-								<div key={key} className={`clay-${key}`}>
-									{`clay ${key}`}
-								</div>
-							)
-						})}
-					</s.Column>
-				</s.Grid>
+						display: 'flex',
+						flexWrap: 'wrap',
+						marginTop: '3rem',
+						marginBottom: '3rem',
+					}}>
+					<Box
+						shadow="sm"
+						as="section"
+						p="60"
+						mr="40"
+						mb="40"
+						fill="lime"
+						radius="lg">
+						<Text as="h1" size="400">
+							Small
+						</Text>
+					</Box>
+					<Box shadow="base" as="section" p="60" mr="40" mb="40">
+						<Text as="h1" size="400">
+							Default
+						</Text>
+					</Box>
+					<Box shadow="md" as="section" p="60" mr="40" mb="40">
+						<Text as="h1" size="400">
+							Medium
+						</Text>
+					</Box>
+					<Box shadow="lg" as="section" p="60" mr="40" mb="40">
+						<Text as="h1" size="400">
+							Large
+						</Text>
+					</Box>
+					<Box shadow="xl" as="section" p="60" mr="40" mb="40">
+						<Text as="h1" size="400">
+							Extra Large
+						</Text>
+					</Box>
+					<Box shadow="2xl" as="section" p="60" mr="40" mb="40">
+						<Text as="h1" size="400">
+							Extra Large 2x
+						</Text>
+					</Box>
+					<Box shadow="3xl" as="section" p="60" mr="40" mb="40">
+						<Text as="h1" size="400">
+							Extra Large 3X
+						</Text>
+					</Box>
+				</div>
+			</Container>
+			<Container fill="blue" maxWidth="md">
+				<Text as="h1" size="400">
+					Medium (768)
+				</Text>
+			</Container>
+			<Container fill="cyan" maxWidth="lg">
+				<Text as="h1" size="400">
+					Large (992)
+				</Text>
+			</Container>
+			<Container fill="magenta" maxWidth="xl">
+				<Text as="h1" size="400">
+					Extra Large (1200)
+				</Text>
+			</Container>
+			<Container style={{ background: 'goldenrod' }} maxWidth="xl2">
+				<Text as="h1" size="400">
+					2X Large (1440)
+				</Text>
+			</Container>
+			<Container style={{ background: 'lime' }} maxWidth="xl3">
+				<Text as="h1" size="400">
+					3X Large (2256)
+				</Text>
+			</Container>
+			<Container style={{ background: 'yellow' }}>
+				<Text as="h1" size="400">
+					Small (576px)
+				</Text>
+			</Container>
+			<Container style={{ background: 'black', color: 'white' }}>
+				<Text as="h1" size="400">
+					Medium (768)
+				</Text>
+			</Container>
+			<Container style={{ background: 'cyan' }}>
+				<Text as="h1" size="400">
+					Large (992)
+				</Text>
+			</Container>
+			<Container style={{ background: 'magenta' }}>
+				<Text as="h1" size="400">
+					Extra Large (1200)
+				</Text>
+			</Container>
+			<Container style={{ background: 'goldenrod' }}>
+				<Text as="h1" size="400">
+					2X Large (1440)
+				</Text>
+			</Container>
+			<Container style={{ background: 'lime' }}>
+				<Text as="h1" size="400">
+					3X Large (2256)
+				</Text>
 			</Container>
 		</BaseLayout>
 	)

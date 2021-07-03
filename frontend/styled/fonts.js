@@ -7,80 +7,75 @@ export const familyDefault = `Roboto, Graphik, -apple-system, BlinkMacSystemFont
 
 // Sizes
 
-export const fz0 = `${10 / 16}rem`
-export const lh0 = `${16 / 16}rem`
+export const fz = {
+	0: `${10 / 16}rem`,
+	100: `${12 / 16}rem`,
+	200: `${14 / 16}rem`,
+	300: `${16 / 16}rem`,
+	400: `${18 / 16}rem`,
+	500: `${21 / 16}rem`,
+	600: `${24 / 16}rem`,
+	700: `${26 / 16}rem`,
+	800: `${31 / 16}rem`,
+	900: `${37 / 16}rem`,
+	1000: `${48 / 16}rem`,
+}
 
-export const fz100 = `${12 / 16}rem`
-export const lh100 = `${20 / 16}rem`
-
-export const fz200 = `${14 / 16}rem`
-export const lh200 = `${20 / 16}rem`
-
-export const fz300 = `${16 / 16}rem`
-export const lh300 = `${28 / 16}rem`
-
-export const fz400 = `${18 / 16}rem`
-export const lh400 = `${32 / 16}rem`
-
-export const fz500 = `${21 / 16}rem`
-export const lh500 = `${32 / 16}rem`
-
-export const fz600 = `${24 / 16}rem`
-export const lh600 = `${32 / 16}rem`
-
-export const fz700 = `${26 / 16}rem`
-export const lh700 = `${40 / 16}rem`
-
-export const fz800 = `${31 / 16}rem`
-export const lh800 = `${48 / 16}rem`
-
-export const fz900 = `${37 / 16}rem`
-export const lh900 = `${52 / 16}rem`
-
-export const fz1000 = `${48 / 16}rem`
-export const lh1000 = `${60 / 16}rem`
+export const lh = {
+	0: `${16 / 16}rem`,
+	100: `${20 / 16}rem`,
+	200: `${20 / 16}rem`,
+	300: `${28 / 16}rem`,
+	400: `${32 / 16}rem`,
+	500: `${32 / 16}rem`,
+	600: `${32 / 16}rem`,
+	700: `${40 / 16}rem`,
+	800: `${48 / 16}rem`,
+	900: `${52 / 16}rem`,
+	1000: `${60 / 16}rem`,
+}
 
 export const f0 = css`
-	font-size: ${fz0};
-	line-height: ${lh0};
+	font-size: ${fz[0]};
+	line-height: ${lh[0]};
 `
 export const f100 = css`
-	font-size: ${fz100};
-	line-height: ${lh100};
+	font-size: ${fz[100]};
+	line-height: ${lh[100]};
 `
 export const f200 = css`
-	font-size: ${fz200};
-	line-height: ${lh200};
+	font-size: ${fz[200]};
+	line-height: ${lh[200]};
 `
 export const f300 = css`
-	font-size: ${fz300};
-	line-height: ${lh300};
+	font-size: ${fz[300]};
+	line-height: ${lh[300]};
 `
 export const f400 = css`
-	font-size: ${fz400};
-	line-height: ${lh400};
+	font-size: ${fz[400]};
+	line-height: ${lh[400]};
 `
 export const f500 = css`
-	font-size: ${fz500};
-	line-height: ${lh500};
+	font-size: ${fz[500]};
+	line-height: ${lh[500]};
 `
 export const f600 = css`
-	font-size: ${fz600};
-	line-height: ${lh600};
+	font-size: ${fz[600]};
+	line-height: ${lh[600]};
 `
 export const f700 = css`
-	font-size: ${fz700};
-	line-height: ${lh700};
+	font-size: ${fz[700]};
+	line-height: ${lh[700]};
 `
 export const f800 = css`
-	font-size: ${fz800};
-	line-height: ${lh800};
+	font-size: ${fz[800]};
+	line-height: ${lh[800]};
 `
 export const f900 = css`
-	font-size: ${fz900};
-	line-height: ${lh900};
+	font-size: ${fz[900]};
+	line-height: ${lh[900]};
 `
 export const f1000 = css`
-	font-size: ${fz1000};
-	line-height: ${lh1000};
+	font-size: ${fz[1000]};
+	line-height: ${lh[1000]};
 `
